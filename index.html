@@ -1,0 +1,2564 @@
+<!DOCTYPE html>
+<html lang="nb" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nils sin samfunnsbok — Kapittel 1 og 2</title>
+  <script>
+    (function () {
+      const saved = localStorage.getItem('delta-theme');
+      if (saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Newsreader', 'Georgia', 'serif'],
+          },
+          colors: {
+            nordic: {
+              bg: 'var(--nordic-bg)',
+              surface: 'var(--nordic-surface)',
+              ink: 'var(--nordic-ink)',
+              muted: 'var(--nordic-muted)',
+              border: 'var(--nordic-border)',
+              accent: 'var(--nordic-accent)',
+              accentSoft: 'var(--nordic-accent-soft)',
+              accentDark: 'var(--nordic-accent-dark)',
+            }
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --nordic-bg: #F6F8F7;
+      --nordic-surface: #FFFFFF;
+      --nordic-ink: #182226;
+      --nordic-muted: #526066;
+      --nordic-border: #E0E7E5;
+      --nordic-accent: #0F766E;
+      --nordic-accent-soft: #E6F4F1;
+      --nordic-accent-dark: #115E59;
+    }
+
+    html.dark {
+      --nordic-bg: #0D1417;
+      --nordic-surface: #152025;
+      --nordic-ink: #E8F0F0;
+      --nordic-muted: #98AEB3;
+      --nordic-border: #25363D;
+      --nordic-accent: #2DD4BF;
+      --nordic-accent-soft: #133533;
+      --nordic-accent-dark: #5EEAD4;
+      color-scheme: dark;
+    }
+
+    /* Konsistent mørk modus på eksisterende flater og kort */
+    html.dark .bg-white {
+      background-color: var(--nordic-surface) !important;
+    }
+    html.dark .bg-white\/90 {
+      background-color: rgba(21, 32, 37, 0.9) !important;
+    }
+    html.dark .bg-white\/60 {
+      background-color: rgba(21, 32, 37, 0.65) !important;
+    }
+    html.dark .hover\:bg-white:hover {
+      background-color: #1C2A30 !important;
+    }
+    html.dark .bg-nordic-ink {
+      background-color: #112226 !important;
+      border: 1px solid #25363D;
+    }
+    html.dark .bg-rose-50\/70 {
+      background-color: rgba(136, 19, 55, 0.2) !important;
+      border-color: rgba(244, 63, 94, 0.3) !important;
+    }
+    html.dark .text-rose-950,
+    html.dark .text-rose-900\/85 {
+      color: #FECDD3 !important;
+    }
+    html.dark .bg-sky-50\/70 {
+      background-color: rgba(12, 74, 110, 0.22) !important;
+      border-color: rgba(56, 189, 248, 0.3) !important;
+    }
+    html.dark .text-sky-950,
+    html.dark .text-sky-900\/85 {
+      color: #BAE6FD !important;
+    }
+
+    /* Tilpasset inline SVG i mørk modus */
+    html.dark svg[aria-label*="maktfordelingsprinsippet"] rect[fill="#F8F9F8"] {
+      fill: #0F1A1E;
+    }
+    html.dark svg[aria-label*="maktfordelingsprinsippet"] rect[fill="#FFFFFF"] {
+      fill: #152025;
+      stroke: #2A3F47;
+    }
+    html.dark svg[aria-label*="maktfordelingsprinsippet"] rect[fill="#E6F4F1"] {
+      fill: #133533;
+      stroke: #2DD4BF;
+    }
+    html.dark svg[aria-label*="maktfordelingsprinsippet"] text[fill="#182226"] {
+      fill: #E8F0F0;
+    }
+    html.dark svg[aria-label*="maktfordelingsprinsippet"] text[fill="#526066"] {
+      fill: #98AEB3;
+    }
+    html.dark svg[aria-label*="maktfordelingsprinsippet"] text[fill="#115E59"],
+    html.dark svg[aria-label*="maktfordelingsprinsippet"] text[fill="#0F766E"] {
+      fill: #5EEAD4;
+    }
+
+    /* Tooltip-lenker i mørk modus */
+    html.dark .text-blue-800 {
+      color: #7DD3FC !important;
+      border-color: #38BDF8 !important;
+    }
+    html.dark .hover\:bg-blue-50:hover {
+      background-color: rgba(56, 189, 248, 0.14) !important;
+    }
+
+    /* Subtile skandinaviske kort-overganger og hero-mønster */
+    .nordic-hero-bg {
+      background-image:
+        radial-gradient(circle at 100% 0%, rgba(15, 118, 110, 0.10) 0%, transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(14, 116, 144, 0.07) 0%, transparent 50%);
+    }
+    html.dark .nordic-hero-bg {
+      background-image:
+        radial-gradient(circle at 100% 0%, rgba(45, 212, 191, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 0% 100%, rgba(56, 189, 248, 0.08) 0%, transparent 50%);
+    }
+
+    .card-lift {
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+    .card-lift:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -10px rgba(15, 118, 110, 0.14);
+    }
+    html.dark .card-lift:hover {
+      box-shadow: 0 10px 25px -10px rgba(0, 0, 0, 0.45);
+    }
+
+    /* Subtil skandinavisk rullefelt og typografi */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5D1;
+      border-radius: 9999px;
+    }
+    html.dark ::-webkit-scrollbar-thumb {
+      background: #2C3F47;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94A39E;
+    }
+    section[data-spy],
+    div[data-spy] {
+      scroll-margin-top: 2rem;
+    }
+
+    /* Utskrift / Lagre kapittel som PDF */
+    @media print {
+      @page {
+        size: A4;
+        margin: 18mm 16mm;
+      }
+      :root,
+      html.dark {
+        --nordic-bg: #FFFFFF !important;
+        --nordic-surface: #FFFFFF !important;
+        --nordic-ink: #182226 !important;
+        --nordic-muted: #4B5563 !important;
+        --nordic-border: #D1D5DB !important;
+        --nordic-accent: #0F766E !important;
+        --nordic-accent-soft: #E6F4F1 !important;
+        --nordic-accent-dark: #115E59 !important;
+        color-scheme: light !important;
+      }
+      html,
+      body {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        background: #FFFFFF !important;
+        color: #182226 !important;
+      }
+      /* Bytt fra flex til block i utskrift så innholdet aldri klippes i kantene */
+      #page-shell {
+        display: block !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      aside,
+      header,
+      #mobile-backdrop,
+      #back-to-top,
+      #future-chapters-notice,
+      [data-pdf-btn],
+      .no-print {
+        display: none !important;
+      }
+      main {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 4mm 6mm !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
+      }
+      img,
+      svg,
+      table {
+        max-width: 100% !important;
+      }
+      .overflow-x-auto {
+        overflow: visible !important;
+      }
+      /* Skjul tooltip-popups i PDF */
+      span.group > span {
+        display: none !important;
+      }
+      figure,
+      table,
+      article,
+      .rounded-2xl {
+        break-inside: avoid;
+      }
+      body[data-print-only="kap1"] section[id^="kap2-"] {
+        display: none !important;
+      }
+      body[data-print-only="kap2"] section:not([id^="kap2-"]) {
+        display: none !important;
+      }
+      body[data-print-only="kap2"] #kap2-intro {
+        border-top: none !important;
+        padding-top: 0 !important;
+      }
+    }
+  </style>
+</head>
+<body class="bg-nordic-bg text-nordic-ink font-sans antialiased transition-colors duration-200 selection:bg-nordic-accentSoft selection:text-nordic-accentDark">
+
+  <!-- Mobil toppbar -->
+  <header class="lg:hidden sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-nordic-border px-4 py-3 flex items-center justify-between">
+    <div class="flex items-center gap-2.5">
+      <span class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-nordic-accent text-white dark:text-slate-950 font-bold text-xs tracking-tight">NN</span>
+      <div>
+        <p class="text-sm font-semibold leading-tight">Nils sin samfunnsbok</p>
+        <p class="text-xs text-nordic-muted">Kap. 1 og 2</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        data-theme-toggle
+        aria-label="Bytt mellom lys og mørk modus"
+        class="inline-flex items-center justify-center rounded-lg border border-nordic-border bg-white p-1.5 text-nordic-ink hover:bg-nordic-bg transition"
+      >
+        <svg class="theme-icon-sun hidden h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+        </svg>
+        <svg class="theme-icon-moon h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+        </svg>
+      </button>
+      <button
+        id="mobile-menu-btn"
+        type="button"
+        aria-label="Åpne innholdsmeny"
+        aria-expanded="false"
+        class="inline-flex items-center gap-1.5 rounded-lg border border-nordic-border bg-white px-3 py-1.5 text-xs font-medium text-nordic-ink hover:bg-nordic-bg transition"
+      >
+        <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Meny
+      </button>
+    </div>
+  </header>
+
+  <!-- Bakteppe for mobilmeny -->
+  <div id="mobile-backdrop" class="fixed inset-0 z-40 bg-slate-900/30 backdrop-blur-xs hidden lg:hidden"></div>
+
+  <div id="page-shell" class="max-w-[1380px] mx-auto flex min-h-screen">
+
+    <!-- Venstrestilt navigasjonsmeny -->
+    <aside
+      id="sidebar"
+      aria-label="Kapittelnavigasjon"
+      class="fixed lg:sticky top-0 left-0 z-50 lg:z-10 h-screen w-72 shrink-0 bg-white border-r border-nordic-border flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-out"
+    >
+      <!-- Plattform-logo / tittel -->
+      <div class="px-5 py-5 border-b border-nordic-border flex items-center justify-between gap-2">
+        <a href="#intro" class="flex items-center gap-3 min-w-0 group">
+          <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-nordic-accent text-white dark:text-slate-950 font-bold text-sm tracking-tight shadow-xs group-hover:bg-nordic-accentDark transition">
+            NN
+          </span>
+          <div class="min-w-0">
+            <span class="block text-sm font-semibold leading-tight tracking-tight text-nordic-ink">Nils sin samfunnsbok</span>
+            <span class="block text-[11px] uppercase tracking-wider text-nordic-muted font-medium">Læringsplattform</span>
+          </div>
+        </a>
+        <div class="flex items-center gap-1.5">
+          <button
+            type="button"
+            data-theme-toggle
+            aria-label="Bytt mellom lys og mørk modus"
+            title="Bytt lys/mørk modus"
+            class="hidden lg:inline-flex items-center justify-center rounded-lg border border-nordic-border bg-nordic-bg/70 p-2 text-nordic-muted hover:text-nordic-ink hover:border-nordic-accent/40 transition"
+          >
+            <svg class="theme-icon-sun hidden h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+            </svg>
+            <svg class="theme-icon-moon h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+            </svg>
+          </button>
+          <button id="mobile-close-btn" type="button" aria-label="Lukk meny" class="lg:hidden p-1.5 rounded-lg text-nordic-muted hover:text-nordic-ink hover:bg-nordic-bg">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Fremdriftsindikator -->
+      <div class="px-5 py-3 border-b border-nordic-border bg-nordic-bg/60">
+        <div class="flex items-center justify-between text-[11px] font-medium text-nordic-muted mb-1.5">
+          <span>Lesefremdrift</span>
+          <span id="reading-progress-text">0 %</span>
+        </div>
+        <div class="h-1.5 w-full rounded-full bg-nordic-border overflow-hidden">
+          <div id="reading-progress-bar" class="h-full w-0 bg-nordic-accent rounded-full transition-all duration-150"></div>
+        </div>
+      </div>
+
+      <!-- Navigasjonsliste (Kapittel 1 aktiv + klargjort for kapittel 2, 3, ...) -->
+      <nav id="chapter-nav" class="flex-1 overflow-y-auto px-3 py-4 space-y-1.5 text-sm">
+
+        <!-- KAPITTEL 1 (Aktivt kapittel med scroll-spy) -->
+        <div class="chapter-group rounded-xl border border-nordic-border/80 bg-nordic-bg/40 p-2">
+          <button
+            type="button"
+            class="chapter-toggle w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-left font-semibold text-nordic-ink hover:bg-white transition"
+            aria-expanded="true"
+            data-target="chapter-1-links"
+          >
+            <span class="flex items-center gap-2">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-md bg-nordic-accent text-white text-xs font-bold">1</span>
+              <span class="text-[13px] leading-snug">Dette er politikk!</span>
+            </span>
+            <svg class="chevron h-4 w-4 text-nordic-muted transition-transform rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <ul id="chapter-1-links" class="mt-1.5 space-y-0.5 pl-2 border-l border-nordic-border ml-4">
+            <li>
+              <a href="#intro" data-spy-link="intro" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Innledning og kompetansemål
+              </a>
+            </li>
+            <li>
+              <a href="#makt-og-politikk" data-spy-link="makt-og-politikk" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Makt og politikk
+              </a>
+              <ul class="mt-0.5 space-y-0.5 pl-3">
+                <li>
+                  <a href="#konfliktlinjer" data-spy-link="konfliktlinjer" class="spy-link block px-2 py-1 rounded-md text-xs text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                    Partier og konfliktlinjer
+                  </a>
+                </li>
+                <li>
+                  <a href="#velferdsstaten" data-spy-link="velferdsstaten" class="spy-link block px-2 py-1 rounded-md text-xs text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                    Det offentlige og velferdsstaten
+                  </a>
+                </li>
+                <li>
+                  <a href="#rode-mot-bla" data-spy-link="rode-mot-bla" class="spy-link block px-2 py-1 rounded-md text-xs text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                    Røde mot blå partier
+                  </a>
+                </li>
+                <li>
+                  <a href="#forbruk-og-barekraft" data-spy-link="forbruk-og-barekraft" class="spy-link block px-2 py-1 rounded-md text-xs text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                    Forbruk, vekst og bærekraft
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#partienes-plassering" data-spy-link="partienes-plassering" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Partienes plassering og hjertesaker
+              </a>
+            </li>
+            <li>
+              <a href="#ideologi-og-fakta" data-spy-link="ideologi-og-fakta" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Ideologi og objektive fakta
+              </a>
+              <ul class="mt-0.5 space-y-0.5 pl-3">
+                <li>
+                  <a href="#konkurranseutsetting" data-spy-link="konkurranseutsetting" class="spy-link block px-2 py-1 rounded-md text-xs text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                    Konkurranseutsetting
+                  </a>
+                </li>
+                <li>
+                  <a href="#forskning-og-kildekritikk" data-spy-link="forskning-og-kildekritikk" class="spy-link block px-2 py-1 rounded-md text-xs text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                    Forskning og kildekritikk
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="#sammendrag" data-spy-link="sammendrag" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Sammendrag
+              </a>
+            </li>
+            <li>
+              <a href="#oppgaver" data-spy-link="oppgaver" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Oppgaver
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- KAPITTEL 2 (Aktivt kapittel med scroll-spy) -->
+        <div class="chapter-group rounded-xl border border-nordic-border/80 bg-nordic-bg/40 p-2">
+          <button
+            type="button"
+            class="chapter-toggle w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-left font-semibold text-nordic-ink hover:bg-white transition"
+            aria-expanded="true"
+            data-target="chapter-2-links"
+          >
+            <span class="flex items-center gap-2">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-md bg-nordic-accent text-white text-xs font-bold">2</span>
+              <span class="text-[13px] leading-snug">Demokrati!</span>
+            </span>
+            <svg class="chevron h-4 w-4 text-nordic-muted transition-transform rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <ul id="chapter-2-links" class="mt-1.5 space-y-0.5 pl-2 border-l border-nordic-border ml-4">
+            <li>
+              <a href="#kap2-intro" data-spy-link="kap2-intro" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Ulike typer demokrati
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-prinsipper" data-spy-link="kap2-prinsipper" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Hva gjør et land demokratisk?
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-maktfordeling" data-spy-link="kap2-maktfordeling" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Maktfordeling og parlamentarisme
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-regjeringen" data-spy-link="kap2-regjeringen" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Regjeringen
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-stortinget" data-spy-link="kap2-stortinget" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Stortinget 2025–2029
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-styringsnivaene" data-spy-link="kap2-styringsnivaene" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Styringsnivåene i Norge
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-kommunene" data-spy-link="kap2-kommunene" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Kommunene
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-fylkeskommunene" data-spy-link="kap2-fylkeskommunene" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Fylkeskommunene
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-lokalvalg" data-spy-link="kap2-lokalvalg" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Kommunestyre- og fylkestingsvalg
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-usa" data-spy-link="kap2-usa" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                USA: Føderalisme og maktfordeling
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-sammendrag" data-spy-link="kap2-sammendrag" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Sammendrag
+              </a>
+            </li>
+            <li>
+              <a href="#kap2-oppgaver" data-spy-link="kap2-oppgaver" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Oppgaver
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!--
+          UTVIDELSESOMRÅDE FOR KOMMENDE KAPITLER
+          Når kapittel 2, 3 osv. opprettes (f.eks. kapittel-2.html eller seksjoner),
+          legg til nye kapitler i `FUTURE_CHAPTERS`-listen i scriptet nederst,
+          eller erstatt lenkene direkte her med href="kapittel-2.html".
+        -->
+        <div class="pt-3 mt-3 border-t border-nordic-border">
+          <p class="px-2.5 pb-1.5 text-[11px] font-semibold uppercase tracking-wider text-nordic-muted">
+            Flere kapitler
+          </p>
+          <ul id="future-chapters-nav" class="space-y-1"></ul>
+        </div>
+      </nav>
+
+      <!-- Bunntekst i meny -->
+      <div class="px-5 py-3 border-t border-nordic-border text-[11px] text-nordic-muted flex items-center justify-between">
+        <span>Samfunnsfag Vg1</span>
+        <span>Skandinavisk utgave</span>
+      </div>
+    </aside>
+
+    <!-- Hovedinnhold -->
+    <main id="main-content" class="flex-1 min-w-0 px-5 sm:px-8 lg:px-14 py-8 lg:py-12 max-w-4xl mx-auto">
+
+      <!-- Toppnavigasjon mellom kapitler -->
+      <div class="flex items-center justify-between text-xs text-nordic-muted pb-6 mb-8 border-b border-nordic-border">
+        <span class="inline-flex items-center gap-1.5 opacity-50 cursor-not-allowed">
+          <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          Forrige kapittel
+        </span>
+        <span class="font-medium text-nordic-ink">Kapittel 1–2 av 7</span>
+        <a href="#kap2-intro" class="inline-flex items-center gap-1.5 text-nordic-accent hover:text-nordic-accentDark font-medium transition">
+          Hopp til Kapittel 2: Demokrati!
+          <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- 1. INNLEDNING -->
+      <section id="intro" data-spy class="mb-16">
+        <div class="nordic-hero-bg rounded-3xl bg-white border border-nordic-border p-6 sm:p-9 shadow-2xs mb-8">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div class="inline-flex items-center gap-2 rounded-full bg-nordic-accentSoft px-3 py-1 text-xs font-semibold text-nordic-accentDark">
+              <span>Kapittel 1</span>
+              <span aria-hidden="true">•</span>
+              <span>Samfunnsfag</span>
+            </div>
+            <div class="flex items-center gap-2 text-[11px] font-medium text-nordic-muted">
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">6 temaer</span>
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">Ordforklaringer</span>
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">Oppgaver</span>
+            </div>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-nordic-ink mb-4">
+            Dette er politikk!
+          </h1>
+
+          <p class="text-base sm:text-lg text-nordic-muted leading-relaxed mb-5">
+            Har du noen gang opplevd et overfylt morgentog, en buss som aldri kom, eller hørt diskusjoner om manglende sykehjemsplasser og nedlagte fritidsklubber? Ethvert samfunn står overfor utfordringer som ikke kan løses samtidig. Spørsmålet om hva vi skal prioritere først, og hvem som skal betale regningen, er selve kjernen i politikken.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              data-pdf-btn
+              data-pdf-chapter="kap1"
+              data-pdf-title="Nils-sin-samfunnsbok-Kapittel-1"
+              class="inline-flex items-center gap-2 rounded-xl bg-nordic-accent text-white dark:text-slate-950 px-4 py-2 text-xs font-semibold shadow-xs hover:bg-nordic-accentDark transition"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Last ned Kapittel 1 som PDF
+            </button>
+          </div>
+        </div>
+
+        <figure class="my-6">
+          <img
+            src="images/busskur.png"
+            alt="Norsk busskur langs veien"
+            class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            Kollektivtilbudet i by og bygd er et klassisk eksempel på politisk prioritering. Foto: Eva Smådahl, Riksantikvarien (CC BY 2.5, Wikimedia Commons).
+          </figcaption>
+        </figure>
+
+        <!-- Kompetansemål-boks -->
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 sm:p-7 shadow-2xs mb-8">
+          <h2 class="text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-3">
+            Kompetansemål i kapittelet
+          </h2>
+          <p class="text-sm text-nordic-muted mb-4">
+            Etter å ha arbeidet med dette kapittelet skal du kunne:
+          </p>
+          <ul class="space-y-2.5 text-sm text-nordic-ink">
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+              <span>Utforske og presentere dagsaktuelle temaer og debatter ved hjelp av samfunnsfaglige metoder, kilder og digitale verktøy, og argumentere for egne og andres synspunkter.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+              <span>Vurdere hvordan maktutøvelse påvirker enkeltpersoner og hele samfunnet.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+              <span>Drøfte sammenhengen mellom personlig økonomi, reklame- og forbrukspress, og hvordan forbruk påvirker individ, grupper og samfunn.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+              <span>Reflektere over forholdet mellom økonomisk vekst, levestandard og livskvalitet i et globalt og bærekraftig perspektiv.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+              <span>Analysere hvordan egne interesser og ideologisk ståsted former argumentasjon og kildebruk.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Case-eksempel: Hvem skal betale? -->
+        <div class="rounded-2xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-6">
+          <h3 class="font-semibold text-base text-nordic-ink mb-2">Case: Trengsel på toget – hvem skal ta regningen?</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-3">
+            Tenk deg en elev som faller på perrongen fordi morgentoget er stappfullt. Hva er den riktige løsningen? Skal den reisende bare ta et tidligere tog og miste søvn? Skal billettprisene økes for å finansiere flere avganger – med fare for at færre tar toget? Eller bør staten bevilge mer penger gjennom høyere skatter eller økte bompenger for bilister?
+          </p>
+          <p class="text-xs text-nordic-muted">
+            Ulike grupper i samfunnet har ulike interesser. Derfor blir prioritering av fellesskapets midler alltid et politisk spørsmål.
+          </p>
+        </div>
+      </section>
+
+      <!-- 2. MAKT OG POLITIKK -->
+      <section id="makt-og-politikk" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Makt og politikk
+        </h2>
+        <p class="text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Når mennesker er uenige om hvilke problemer som bør løses først og hvordan de skal løses, handler det om hvem som får viljen sin. <strong>Makt</strong> kan defineres som evnen til å få gjennomslag for sin vilje, selv når man møter motstand. <strong>Politikk</strong> dreier seg om hvem som har makt i samfunnet, og hvordan denne makten brukes til å fordele <em>goder</em> og <em>byrder</em>.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-10">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Goder</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Alt vi ønsker oss og verdsetter – som trygg og næringsrik mat, god skolegang, rask helsehjelp, ferie, ren luft og et velfungerende kollektivtilbud.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1.5">Byrder</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Alt vi helst vil slippe – som lange arbeidsdager, helsekøer, forurenset miljø, høye skatter eller tungt og ensformig arbeid.
+            </p>
+          </div>
+        </div>
+
+        <!-- Partier og konfliktlinjer -->
+        <div id="konfliktlinjer" data-spy class="mb-10">
+          <h3 class="text-xl font-semibold text-nordic-ink mb-3">Partier og konfliktlinjer</h3>
+          <figure class="my-5">
+            <img
+              src="images/stortingssalen.jpg"
+              alt="Stortingssalen i Stortingsbygningen i Oslo"
+              class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+              loading="lazy"
+            />
+            <figcaption class="mt-2 text-xs text-nordic-muted">
+              Stortingssalen i Oslo – her møtes partiene for å debattere og fatte vedtak. Foto: Smuconlaw (CC BY-SA 3.0, Wikimedia Commons).
+            </figcaption>
+          </figure>
+          <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+            Enkeltpersoner har sjelden nok makt alene til å endre samfunnet, men ved å gå sammen i <strong>politiske partier</strong> eller <strong>ungdomspartier</strong> kan man samarbeide om felles hjertesaker. Partienes mål er å få flest mulig representanter inn i de styrende organene – som Stortinget, regjeringen, fylkesting og kommunestyrer.
+          </p>
+          <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed">
+            Selv om Norge har mange partier, følger uenighetene deres ofte bestemte mønstre. Slike varige skillelinjer i politikken kaller vi <strong>politiske konfliktlinjer</strong>.
+          </p>
+        </div>
+
+        <!-- Det offentlige og velferdsstaten -->
+        <div id="velferdsstaten" data-spy class="mb-10">
+          <h3 class="text-xl font-semibold text-nordic-ink mb-3">Hvem skal betale? Markedet og velferdsstaten</h3>
+          <figure class="my-5">
+            <img
+              src="images/tog.jpg"
+              alt="Hvem skal betale for at kollektivtrafikken skal bli bedre?"
+              class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+              loading="lazy"
+            />
+          </figure>
+          <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+            I en ren <strong>markedsøkonomi</strong> styres produksjon og priser av tilbud, etterspørsel og konkurranse mellom private aktører. Hvor mye du får, avhenger av betalingsevnen din. I Norge har vi derimot en <strong>blandingsøkonomi</strong>: både private bedrifter og <strong>det offentlige</strong> (stat, fylkeskommune og kommune) produserer varer og tjenester.
+          </p>
+          <h4 class="text-lg font-semibold text-nordic-ink mt-6 mb-3">Det offentlige og den norske velferdsstaten</h4>
+          <figure class="my-5">
+            <img
+              src="images/velferd.jpg"
+              alt="Det offentlige finansierer gratis eller subsidierte velferdstjenester som helse og utdanning"
+              class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+              loading="lazy"
+            />
+          </figure>
+          <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+            Gjennom skatter, avgifter og inntekter fra offentlig eierskap (som Equinor, Statkraft eller kommunale kraftverk) finansieres den norske <strong>velferdsstaten</strong>. Den gir innbyggerne gratis eller <em>subsidierte</em> tjenester samt økonomisk støtte i ulike livsfaser.
+          </p>
+
+          <!-- Tabell: Den norske velferdsstaten -->
+          <div class="overflow-x-auto rounded-2xl border border-nordic-border bg-white shadow-2xs">
+            <table class="w-full text-left text-xs sm:text-sm border-collapse">
+              <thead>
+                <tr class="bg-nordic-bg border-b border-nordic-border text-nordic-ink">
+                  <th class="p-4 font-semibold">Gratis tjenester <span class="block text-[11px] font-normal text-nordic-muted">Helt betalt av det offentlige</span></th>
+                  <th class="p-4 font-semibold">Subsidierte tjenester <span class="block text-[11px] font-normal text-nordic-muted">Delvis betalt av det offentlige</span></th>
+                  <th class="p-4 font-semibold">Pengestøtte <span class="block text-[11px] font-normal text-nordic-muted">Direkte støtte til enkeltpersoner</span></th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-nordic-border text-nordic-ink/90">
+                <tr>
+                  <td class="p-4">Sykehusbehandling og psykiatrisk hjelp</td>
+                  <td class="p-4">Alders- og sykehjem</td>
+                  <td class="p-4">Alders- og uførepensjon</td>
+                </tr>
+                <tr>
+                  <td class="p-4">Lege for barn under 16 år og tannlege under 18 år</td>
+                  <td class="p-4">Fastlege, psykolog og fysioterapeut (egenandel)</td>
+                  <td class="p-4">Sykepenger og betalt foreldrepermisjon</td>
+                </tr>
+                <tr>
+                  <td class="p-4">10-årig grunnskole, videregående og offentlige høyskoler</td>
+                  <td class="p-4">Barnehage og hjemmehjelpstjenester</td>
+                  <td class="p-4">Dagpenger, sosialhjelp og barnetrygd</td>
+                </tr>
+                <tr>
+                  <td class="p-4">Biblioteker, parker, lekeplasser og veier uten bom</td>
+                  <td class="p-4">Kollektivtransport, svømmehaller og kulturtilbud</td>
+                  <td class="p-4">Studiestipend, studielån og landbruksstøtte</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Røde mot blå partier -->
+        <div id="rode-mot-bla" data-spy class="mb-10">
+          <h3 class="text-xl font-semibold text-nordic-ink mb-3">Røde mot blå partier (venstre–høyre-aksen)</h3>
+          <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-5">
+            En av de viktigste konfliktlinjene handler om hvor stor velferdsstaten skal være, og hvor mye skatt vi skal betale. Siden den franske revolusjonen har de som ønsker større økonomisk likhet og omfordeling blitt kalt <strong>venstresiden</strong> (røde), mens de som mener noe ulikhet er nødvendig for verdiskaping og frihet, kalles <strong>høyresiden</strong> (blå/borgerlige).
+          </p>
+
+          <!-- Visuell høyre-venstre-skala -->
+          <div class="rounded-2xl bg-white border border-nordic-border p-5 mb-5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-nordic-muted mb-3">Den tradisjonelle høyre–venstre-skalaen</p>
+            <div class="grid grid-cols-3 sm:grid-cols-9 gap-1.5 text-center text-xs font-semibold">
+              <div class="rounded-lg py-2 px-1 bg-rose-700 text-white">Rødt</div>
+              <div class="rounded-lg py-2 px-1 bg-rose-600 text-white">SV</div>
+              <div class="rounded-lg py-2 px-1 bg-rose-500 text-white">Ap</div>
+              <div class="rounded-lg py-2 px-1 bg-emerald-600 text-white">Sp</div>
+              <div class="rounded-lg py-2 px-1 bg-green-600 text-white">MDG</div>
+              <div class="rounded-lg py-2 px-1 bg-amber-400 text-slate-900">KrF</div>
+              <div class="rounded-lg py-2 px-1 bg-teal-600 text-white">Venstre</div>
+              <div class="rounded-lg py-2 px-1 bg-sky-600 text-white">Høyre</div>
+              <div class="rounded-lg py-2 px-1 bg-blue-800 text-white">FrP</div>
+            </div>
+            <div class="flex justify-between text-[11px] text-nordic-muted mt-2.5 px-1">
+              <span>← Venstresiden (mer omfordeling)</span>
+              <span class="hidden sm:inline">Sentrum</span>
+              <span>Høyresiden (lavere skatt) →</span>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="rounded-xl bg-rose-50/70 border border-rose-200/80 p-4">
+              <h4 class="font-semibold text-rose-950 mb-1">Røde partier (sosialister og sosialdemokrater)</h4>
+              <p class="text-rose-900/85 leading-relaxed">
+                Ønsker å utjevne forskjeller gjennom <strong>progressive skatter</strong> (de som tjener mest betaler høyere prosent) og en sterk velferdsstat. Mørkerøde ønsker å erstatte kapitalismen med sosialisme, mens lyserøde sosialdemokrater støtter blandingsøkonomi.
+              </p>
+            </div>
+            <div class="rounded-xl bg-sky-50/70 border border-sky-200/80 p-4">
+              <h4 class="font-semibold text-sky-950 mb-1">Blå partier (borgerlige)</h4>
+              <p class="text-sky-900/85 leading-relaxed">
+                Forsvarer privat eiendomsrett og ønsker lavere skatter for å stimulere verdiskaping. Lyseblå vil stort sett bevare dagens velferdsstat, men prioritere skattelette fremfor nye ordninger, mens mørkeblå er villige til å kutte i velferdsgoder for å få kraftige skattekutt.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forbruk, vekst og bærekraft -->
+        <div id="forbruk-og-barekraft" data-spy>
+          <h3 class="text-xl font-semibold text-nordic-ink mb-3">Hvor mye skal vi kjøpe? Vekst mot miljø</h3>
+          <figure class="my-5">
+            <img
+              src="images/miljo.jpg"
+              alt="Forbruk, økonomisk vekst og bærekraftig utvikling"
+              class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+              loading="lazy"
+            />
+          </figure>
+          <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+            Høyere produktivitet og <strong>økonomisk vekst</strong> har gitt oss høy <strong>levestandard</strong>. Samtidig lever vi i et <strong>forbrukersamfunn</strong> preget av reklame, kjøpepress og jakt på sosial status. Dette reiser to viktige spørsmål: Gir stadig flere ting høyere <strong>livskvalitet</strong>? Og tåler kloden forbruket vårt?
+          </p>
+          <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+            Dersom vi tar ut mer ressurser eller slipper ut mer enn naturen klarer å håndtere, bryter vi <strong>naturens tålegrense</strong>. Målet om <strong>bærekraftig utvikling</strong> handler om å dekke dagens behov uten å ødelegge mulighetene for fremtidige generasjoner.
+          </p>
+          <div class="rounded-xl bg-white border border-nordic-border p-5 text-sm mb-4">
+            <h4 class="font-semibold text-nordic-ink mb-2">Grønne partier mot vekstpartier</h4>
+            <p class="text-nordic-muted leading-relaxed">
+              Her går en annen viktig konfliktlinje på tvers av høyre og venstre. <strong>Grønne partier</strong> mener rike land må bremse forbruksveksten, satse på kollektivtransport og begrense bilbruk og oljeutvinning. <strong>Vekstpartier</strong> advarer mot at redusert produksjon gir økt arbeidsledighet, og mener økonomisk vekst trengs for å finansiere velferd og ny teknologi. Samtidig skiller <em>blågrønne</em> (markedsløsninger og grønne skatter) lag fra <em>rødgrønne</em> (direkte politisk styring og omfordeling).
+            </p>
+          </div>
+          <div class="rounded-xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-5 text-sm">
+            <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accentDark mb-1">Lokalt eksempel • Skien og Telemark</span>
+            <h4 class="font-semibold text-nordic-ink mb-2">Bypakke Grenland: Bompenger, buss eller bil?</h4>
+            <figure class="my-3">
+              <img
+                src="images/skien-buss.jpg"
+                alt="Elektrisk rutebuss i Skien"
+                class="w-full h-auto max-h-[340px] object-cover rounded-xl shadow-md border border-nordic-border"
+                loading="lazy"
+              />
+              <figcaption class="mt-1.5 text-[11px] text-nordic-muted">
+                Elektrisk rutebuss i Skien – kollektivtrafikken i Grenland styrkes gjennom Bypakke Grenland. Foto: Øyvind Berg (CC BY-SA 4.0, Wikimedia Commons).
+              </figcaption>
+            </figure>
+            <p class="text-nordic-ink/90 leading-relaxed">
+              I Grenland (Skien, Porsgrunn og Siljan) er <strong>Bypakke Grenland</strong> et godt eksempel på denne konfliktlinjen i praksis. Gjennom bompenger og statlige midler finansieres bedre busstilbud, gang- og sykkelveier samt nye veiprosjekter. Mens grønne partier ønsker å bruke bompenger for å dempe biltrafikken og styrke kollektivtilbudet, er flere vekst- og bilistvennlige partier kritiske til høye bompengeutgifter for pendlere i Telemark.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. PARTIENES PLASSERING OG HJERTESAKER -->
+      <section id="partienes-plassering" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Partienes plassering og hjertesaker
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Ved å kombinere den rød-blå aksen med den grønne aksen får vi et todimensjonalt bilde av norsk politikk. Nedenfor ser du hovedtrekkene ved de ni største partiene på Stortinget og deres viktigste hjertesaker.
+        </p>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/rodt.svg" alt="Rødt logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Rødt</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 shrink-0">Lengst til venstre</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Sosialistisk parti som vil fjerne forskjeller gjennom høy skatt for de rikeste, gratis barnehage og kollektivtransport. Mot oljeleting, EU/EØS og NATO.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/sv.svg" alt="Sosialistisk Venstreparti logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Sosialistisk Venstreparti (SV)</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 shrink-0">Rødgrønt</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Arbeider for en større velferdsstat betalt av økte skatter for høye inntekter, raskere utfasing av olje og prioritering av kollektiv, sykkel og gange. Mot NATO, EU og EØS.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/ap.svg" alt="Arbeiderpartiet logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Arbeiderpartiet (Ap)</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-rose-100 text-rose-800 shrink-0">Sosialdemokratisk</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Grunnlagt for å sikre arbeideres rettigheter. Står nærmere sentrum enn SV og Rødt. Vil bevare og utvikle velferdsstaten gjennom blandingsøkonomi og høy sysselsetting.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/sp.png" alt="Senterpartiet logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Senterpartiet (Sp)</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 shrink-0">Sentrum / Distrikt</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Motstander av sentralisering og EØS-avtalen. Kjemper for Distrikts-Norge, lokale sykehus og polititjenester, samt vern om norsk landbruk og nasjonal selvråderett.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/mdg.svg" alt="Miljøpartiet De Grønne logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Miljøpartiet De Grønne (MDG)</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-green-100 text-green-800 shrink-0">Grønt parti</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Setter klima og naturvern over alt annet. Vil avvikle olje- og gassvirksomheten raskt, senke forbruket og bruke grønne avgifter kombinert med skatteletter for lavtlønte.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/krf.svg" alt="Kristelig Folkeparti logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Kristelig Folkeparti (KrF)</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 shrink-0">Verdikonservativt</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Borgerlig sentrumsparti som vil bevare kristne og tradisjonelle verdier i samfunnet, motvirke sekularisering, styrke familien og stramme inn abortloven.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/venstre.svg" alt="Venstre logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Venstre</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-teal-100 text-teal-800 shrink-0">Blågrønt / Liberalt</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Norges eldste parti (1884). Liberalt parti som forsvarer individuell frihet og privat næringsliv, kombinert med grønne avgifter for å kutte klimautslipp og lette skatter for småbedrifter.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/hoyre.png" alt="Høyre logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Høyre</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-sky-100 text-sky-800 shrink-0">Liberalkonservativt</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Stiftet i 1884. Ønsker gradvise reformer fremfor raske omveltninger, lavere skatt på inntekt, formue og eiendom, samt større valgfrihet og effektivisering av offentlig sektor.
+            </p>
+          </article>
+
+          <article class="rounded-xl bg-white border border-nordic-border p-5 flex flex-col">
+            <div class="flex items-start justify-between gap-2 mb-3">
+              <div class="flex items-center gap-3">
+                <img src="images/partier/frp.svg" alt="Fremskrittspartiet logo" class="h-9 w-9 object-contain shrink-0" loading="lazy" />
+                <h3 class="font-semibold text-nordic-ink leading-snug">Fremskrittspartiet (FrP)</h3>
+              </div>
+              <span class="text-[11px] font-medium px-2 py-0.5 rounded-full bg-blue-100 text-blue-900 shrink-0">Lengst til høyre</span>
+            </div>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Kjemper for kraftige kutt i skatter, avgifter og offentlige inngrep. Vil satse videre på olje og veibygging, bruke mer oljepenger og føre en streng innvandringspolitikk.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- 4. IDEOLOGI OG OBJEKTIVE FAKTA -->
+      <section id="ideologi-og-fakta" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Ideologi og objektive fakta
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Politisk uenighet handler ikke bare om interesser, men også om hva partiene tror vil fungere best i praksis. En <strong>ideologi</strong> er et sammenhengende sett av oppfatninger om hvordan samfunnet fungerer, og hvilke verdier som er rette og viktige.
+        </p>
+
+        <!-- Konkurranseutsetting -->
+        <div id="konkurranseutsetting" data-spy class="mb-10 rounded-2xl bg-white border border-nordic-border p-6">
+          <h3 class="text-lg font-semibold text-nordic-ink mb-3">Eksempel: Gir konkurranseutsetting bedre velferd?</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Både høyre- og venstresiden ønsker mest mulig velferd for pengene og minst mulig unødvendig <em>administrasjon</em> (<strong>byråkrati</strong>). Likevel er de uenige om <strong>konkurranseutsetting</strong> – å legge offentlige oppgaver ut på anbud til private aktører:
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <p class="font-semibold text-nordic-ink mb-1">Borgerlig syn</p>
+              <p class="text-nordic-muted">Konkurranse mellom private selskaper skaper innovasjon, høyere effektivitet og lavere kostnader, slik at innbyggerne får bedre tjenester.</p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <p class="font-semibold text-nordic-ink mb-1">Sosialistisk syn</p>
+              <p class="text-nordic-muted">Anbud krever dobbelt byråkrati til kontroll og oppfølging. Dersom private sparer penger, skjer det ofte på bekostning av kvalitet eller ansattes lønn og arbeidsvilkår.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forskning og kildekritikk -->
+        <div id="forskning-og-kildekritikk" data-spy class="space-y-8">
+          <div>
+            <h3 class="text-xl font-semibold text-nordic-ink mb-3">Hva sier samfunnsforskningen?</h3>
+            <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+              Fordi partier tolker virkeligheten gjennom sin egen ideologi, må vi søke <strong>objektive kilder</strong> som beskriver forholdene uavhengig av politisk ståsted. Forskere bruker gjerne to hovedmetoder:
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div class="rounded-xl bg-white border border-nordic-border p-4">
+                <h4 class="font-semibold text-nordic-ink mb-1">Kvalitativ metode</h4>
+                <p class="text-nordic-muted">Undersøker ett eller få tilfeller i dybden (f.eks. gjennom intervjuer eller observasjon) for å forstå årsaker og detaljer, men kan ikke si noe sikkert om hele landet.</p>
+              </div>
+              <div class="rounded-xl bg-white border border-nordic-border p-4">
+                <h4 class="font-semibold text-nordic-ink mb-1">Kvantitativ metode</h4>
+                <p class="text-nordic-muted">Samler tall og statistikk fra et stort antall tilfeller for å kunne trekke generelle konklusjoner og sammenligne grupper.</p>
+              </div>
+            </div>
+            <p class="text-xs text-nordic-muted mt-3">
+              Merk at også forskningsresultater kan påvirkes av hvem som har bestilt undersøkelsen, og hvilke premisser eller kostnader som er tatt med i regnestykket.
+            </p>
+          </div>
+
+          <!-- Vær kildekritisk -->
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <h3 class="text-xl font-semibold text-nordic-ink mb-2">Vær kildekritisk! Fire viktige spørsmål</h3>
+            <p class="text-sm text-nordic-muted mb-4">
+              I debatter om for eksempel menneskeskapte klimaendringer kan man møte motstridende påstander. Du har rett til dine egne meninger, men ikke til dine egne fakta. Still alltid disse fire kontrollspørsmålene:
+            </p>
+            <figure class="my-5">
+              <img
+                src="images/klimastriper.png"
+                alt="Klimastriper som viser temperaturutviklingen i Norge over tid"
+                class="w-full h-auto max-h-[260px] object-cover rounded-2xl shadow-md border border-nordic-border"
+                loading="lazy"
+              />
+              <figcaption class="mt-2 text-xs text-nordic-muted">
+                Klimastripene viser utviklingen i årlig gjennomsnittstemperatur i Norge fra blått (kaldere) til rødt (varmere). Grafikk: Professor Ed Hawkins (CC BY 4.0, Wikimedia Commons).
+              </figcaption>
+            </figure>
+            <ol class="space-y-2.5 text-sm text-nordic-ink">
+              <li class="flex gap-3">
+                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-nordic-accentSoft text-nordic-accentDark font-semibold text-xs">1</span>
+                <span><strong>Relevans:</strong> Gir kilden faktisk informasjon om akkurat det spørsmålet du undersøker?</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-nordic-accentSoft text-nordic-accentDark font-semibold text-xs">2</span>
+                <span><strong>Opphav:</strong> Hvor kommer kunnskapen fra? Gå til <strong>primærkilden</strong> (f.eks. forskningsrapporten) fremfor en <strong>sekundærkilde</strong> som gjenforteller den.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-nordic-accentSoft text-nordic-accentDark font-semibold text-xs">3</span>
+                <span><strong>Formål og tendens:</strong> Har avsenderen et motiv for å påvirke deg? En kilde som bevisst vinkler fakta i én retning, kalles <strong>tendensiøs</strong>.</span>
+              </li>
+              <li class="flex gap-3">
+                <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-nordic-accentSoft text-nordic-accentDark font-semibold text-xs">4</span>
+                <span><strong>Samsvar:</strong> Stemmer opplysningene med det annen troverdig forskning og seriøse kilder (som FNs klimapanel) viser?</span>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. SAMMENDRAG -->
+      <section id="sammendrag" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <div class="rounded-2xl bg-nordic-ink text-white p-6 sm:p-8">
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-teal-300 mb-2">Kort oppsummert</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-semibold mb-4">Sammendrag av Kapittel 1</h2>
+          <ul class="space-y-3 text-sm text-slate-200 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Politikk og makt:</strong> Politikk handler om hvordan goder og byrder skal fordeles. Folk organiserer seg i partier for å få makt til å prege beslutninger ut fra sine interesser og sin ideologi.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Rød side (venstresiden):</strong> Ønsker mindre økonomisk ulikhet, flere offentlige velferdsgoder og høyere skatt for dem med høyest inntekt og formue.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Blå side (høyresiden / borgerlige):</strong> Mener noe ulikhet stimulerer verdiskaping, og prioriterer lavere skatter samt konkurranseutsetting fremfor å utvide velferdsstaten.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Grønn side:</strong> Fremhever at forbruket i rike land må ned for å nå målet om bærekraftig utvikling innenfor naturens tålegrense.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Kildekritikk:</strong> Gode politiske vurderinger krever troverdige, objektive primærkilder som ikke er tendensiøse og som samsvarer med etablert forskning.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 6. OPPGAVER -->
+      <section id="oppgaver" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-6">
+          Oppgaver til kapittelet
+        </h2>
+
+        <div class="space-y-6">
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-nordic-accent mb-3">Repeter og redegjør</h3>
+            <ol class="list-decimal list-inside space-y-2 text-sm text-nordic-ink/90">
+              <li>Forklar med egne ord hva begrepene <em>makt</em> og <em>politikk</em> betyr.</li>
+              <li>Hvorfor velger mange ungdommer å melde seg inn i et ungdomsparti?</li>
+              <li>Hvilke grupper og interesser forsvarer henholdsvis røde og borgerlige partier?</li>
+              <li>Hva kjennetegner grønne partier sammenlignet med vekstpartier i samferdselspolitikken?</li>
+              <li>Hva skiller Senterpartiet fra partier som er mer positive til sentralisering?</li>
+              <li>Hva betyr det å være verdikonservativ, og hvilke saker er viktige for KrF?</li>
+              <li>Hvorfor bør du foretrekke primærkilder fremfor sekundærkilder, og hva betyr det at en kilde er tendensiøs?</li>
+              <li>Hvorfor kan forskere komme til ulike konklusjoner om konkurranseutsetting av sykehjem?</li>
+            </ol>
+          </div>
+
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-nordic-accent mb-3">Reflekter og diskuter</h3>
+            <ul class="space-y-2.5 text-sm text-nordic-ink/90">
+              <li><strong>Togtrengsel:</strong> Diskuter i grupper om problemet med fulle morgentog best løses ved tidligere avganger, dyrere billetter eller høyere bompenger.</li>
+              <li><strong>Forbruk og livskvalitet:</strong> Skriv en kort drøftende tekst om påstanden: «Reklame skaper et kjøpepress som gir høyere levestandard, men ikke nødvendigvis bedre livskvalitet.»</li>
+              <li><strong>Paneldebatt:</strong> Arranger et rollespill der ulike elever representerer hvert sitt parti og debatterer et aktuelt lokalt eller nasjonalt tema.</li>
+            </ul>
+          </div>
+
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <h3 class="text-sm font-semibold uppercase tracking-wider text-nordic-accent mb-3">Utforsk kilder</h3>
+            <p class="text-sm text-nordic-ink/90 leading-relaxed">
+              Søk opp ulike nettartikler om et omstridt tema (for eksempel klimaendringer eller konkurranseutsetting). Vurder kildene med de fire kildekritiske spørsmålene, og undersøk hvordan ulike partier bruker sosiale medier og retoriske appellformer for å fremme sitt budskap.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- KAPITTEL 2: DEMOKRATI!                                              -->
+      <!-- =================================================================== -->
+      <section id="kap2-intro" data-spy class="mb-16 pt-10 border-t-2 border-nordic-border">
+        <div class="nordic-hero-bg rounded-3xl bg-white border border-nordic-border p-6 sm:p-9 shadow-2xs mb-8">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div class="inline-flex items-center gap-2 rounded-full bg-nordic-accentSoft px-3 py-1 text-xs font-semibold text-nordic-accentDark">
+              <span>Kapittel 2</span>
+              <span aria-hidden="true">•</span>
+              <span>Samfunnsfag</span>
+            </div>
+            <div class="flex items-center gap-2 text-[11px] font-medium text-nordic-muted">
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">Stortinget 2025–2029</span>
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">USA 2026</span>
+            </div>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-nordic-ink mb-4">
+            Demokrati!
+          </h1>
+
+          <p class="text-base sm:text-lg text-nordic-muted leading-relaxed mb-5">
+            Ordet <em>demokrati</em> kommer fra gresk <em>demos</em> (folk) og <em>kratos</em> (styre), og betyr folkestyre. Idéen bygger på at alle mennesker har lik verdi, slik FNs verdenserklæring om menneskerettigheter slår fast i artikkel 1: alle mennesker er født frie og med samme menneskeverd og rettigheter. Vi møter også demokratiske prinsipper i hverdagen – på skolen, i idrettslag, i arbeidslivet og i organisasjoner.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              data-pdf-btn
+              data-pdf-chapter="kap2"
+              data-pdf-title="Nils-sin-samfunnsbok-Kapittel-2"
+              class="inline-flex items-center gap-2 rounded-xl bg-nordic-accent text-white dark:text-slate-950 px-4 py-2 text-xs font-semibold shadow-xs hover:bg-nordic-accentDark transition"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Last ned Kapittel 2 som PDF
+            </button>
+          </div>
+        </div>
+
+        <h2 class="font-serif text-2xl font-semibold tracking-tight text-nordic-ink mb-3">
+          Ulike typer demokrati
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-5">
+          De fleste land i verden kaller seg demokratiske, men mange fungerer dårlig i praksis. Land som holder valg for å virke demokratiske, men der det foregår utstrakt valgfusk, mangler politiske rettigheter, eller der andre enn de folkevalgte egentlig har makten, kalles ofte <strong>skinndemokrati</strong>.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Direkte demokrati</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Politiske spørsmål avgjøres direkte av folket gjennom folkeavstemninger. Ingen land er rene direkte demokratier i dag, men bruken varierer. I Norge ble det sist holdt nasjonal folkeavstemning i 1994, da flertallet stemte nei til EU-medlemskap.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Indirekte (representativt) demokrati</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Folket velger representanter til folkevalgte organer som Stortinget, fylkesting og kommunestyrer, som styrer på vegne av velgerne. Alle moderne demokratier er hovedsakelig organisert slik.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- KAP 2: HVA GJØR ET LAND DEMOKRATISK? -->
+      <section id="kap2-prinsipper" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Hva gjør et land demokratisk?
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          At det holdes valg med stemmerett for voksne er ikke nok alene. For at et land skal kunne kalles et ekte demokrati, må tre grunnleggende prinsipper være på plass: <strong>like demokratiske rettigheter</strong>, <strong>like demokratiske muligheter</strong> og <strong>vern om enkeltmenneskets og minoriteters interesser</strong>.
+        </p>
+
+        <div class="space-y-6">
+          <!-- Prinsipp 1 -->
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Prinsipp 1</span>
+            <h3 class="text-xl font-semibold text-nordic-ink mb-3">Like demokratiske rettigheter</h3>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div class="p-4 rounded-xl bg-nordic-bg">
+                <h4 class="font-semibold text-nordic-ink mb-1">Stemmerett og reelle valg</h4>
+                <p class="text-nordic-muted leading-relaxed">
+                  I Norge har alle statsborgere over 18 år stemmerett ved stortingsvalg. Historisk har kvinner, fattige og minoriteter vært utestengt. For at stemmeretten skal ha verdi, må valgene være frie og rettferdige uten valgfusk, og de folkevalgte må sitte med den reelle makten.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl bg-nordic-bg">
+                <h4 class="font-semibold text-nordic-ink mb-1">Ytringsfrihet og foreningsfrihet</h4>
+                <p class="text-nordic-muted leading-relaxed">
+                  Demokratisk påvirkning skjer også mellom valgene – uansett alder. Alle har rett til å skrive leserinnlegg, demonstrere, starte underskriftskampanjer eller organisere seg i partier og fagforeninger.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Prinsipp 2 -->
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Prinsipp 2</span>
+            <h3 class="text-xl font-semibold text-nordic-ink mb-3">Like demokratiske muligheter</h3>
+            <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+              Et godt demokrati trenger både høy deltakelse og klare grenser for de folkevalgtes makt. Flere mekanismer bidrar til dette:
+            </p>
+            <ul class="space-y-2.5 text-sm text-nordic-ink/90 mb-4">
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+                <span><strong>Valgdeltakelse:</strong> Selv om alle har rett til å stemme, er det ikke alle som bruker den (ved stortingsvalget i 2021 lot over 20 % være å stemme). Høy deltakelse styrker folkestyret.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+                <span><strong>Kunnskap og frie medier:</strong> Utdanning og uavhengige medier uten sensur er avgjørende for at borgerne kan forstå politikken, følge med og avsløre kritikkverdige forhold.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+                <span><strong>Hindre korrupsjon og habilitetsbrudd:</strong> <strong>Korrupsjon</strong> (å kjøpe politisk innflytelse med penger eller tjenester) er ulovlig. Politikere må også melde seg inhabile og trekke seg fra saker der nære venner eller familie er involvert – ellers begår de <strong>habilitetsbrudd</strong>, som kan føre til at de må gå av.</span>
+              </li>
+              <li class="flex items-start gap-2.5">
+                <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+                <span><strong>Lokal maktfordeling:</strong> I tillegg til tredelingen på nasjonalt nivå er mye makt lagt til kommuner og fylkeskommuner – det motsatte av et diktatur der all makt ligger hos én person.</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Prinsipp 3 -->
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Prinsipp 3</span>
+            <h3 class="text-xl font-semibold text-nordic-ink mb-3">Vern om enkeltmennesket og minoriteter</h3>
+            <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+              Flertallsstyre alene gir ikke et fullverdig demokrati hvis flertallet kan undertrykke enkeltpersoner eller minoriteter. Historien – som da Adolf Hitler ble demokratisk valgt i Tyskland i 1933 og straks startet forfølgelser av jøder og andre grupper – viser hvor farlig et ubegrenset flertall kan være. Derfor trengs både <strong>rettssikkerhet</strong> og minoritetsvern.
+            </p>
+            <div class="grid sm:grid-cols-2 gap-4 text-sm">
+              <div class="p-4 rounded-xl bg-nordic-bg">
+                <h4 class="font-semibold text-nordic-ink mb-2">Kjennetegn på rettssikkerhet</h4>
+                <ul class="space-y-1 text-xs text-nordic-muted list-disc list-inside">
+                  <li>Myndighetene må følge landets lover.</li>
+                  <li>Ingen kan straffes uten dom.</li>
+                  <li>Rett til prøving i en nøytral domstol.</li>
+                  <li>Uskyldig inntil det motsatte er bevist.</li>
+                  <li>Alle er like for loven.</li>
+                  <li>Begge parter skal bli hørt i en sak.</li>
+                </ul>
+              </div>
+              <div class="p-4 rounded-xl bg-nordic-bg">
+                <h4 class="font-semibold text-nordic-ink mb-2">Urfolk og nasjonale minoriteter</h4>
+                <p class="text-xs text-nordic-muted leading-relaxed mb-2">
+                  <strong>Urfolk</strong> er folkegrupper som har bodd i et område før staten og landegrensene ble etablert, og har særskilt beskyttelse for språk og kultur. I Norge er <strong>samene</strong> vårt urfolk.
+                </p>
+                <p class="text-xs text-nordic-muted leading-relaxed">
+                  Norge har også fem <strong>nasjonale minoriteter</strong> med langvarig tilknytning til landet: kvener/norskfinner, skogfinner, jøder, romer og romanifolk/tatere. Norske lover forbyr dessuten diskriminering basert på religion, etnisitet, kjønn, seksuell orientering, kjønnsidentitet og funksjonsnedsettelser.
+                </p>
+              </div>
+            </div>
+            <p class="text-[11px] text-nordic-muted mt-4">
+              Tilpasset fra NDLA: <em>Hva er demokrati?</em> (Eivind Sehested Zakariassen, CC BY-SA).
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- KAP 2: MAKTFORDELING OG PARLAMENTARISME -->
+      <section id="kap2-maktfordeling" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Maktfordelingsprinsippet og parlamentarisme
+        </h2>
+        <figure class="my-5">
+          <img
+            src="images/stortinget.jpg"
+            alt="Stortingsbygningen i Oslo"
+            class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            Stortingsbygningen i Oslo – Norges lovgivende forsamling. Foto: Jorge Láscar (CC BY 2.0, Wikimedia Commons).
+          </figcaption>
+        </figure>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Prinsippet om <strong>maktfordeling</strong> ble lansert av den franske statsrettsfilosofen <strong>Montesquieu</strong> i 1748. Hans utgangspunkt var at den som har makt lett kan bli fristet til å misbruke den, og at «makt må stanse makt». Dersom de samme menneskene som lager lovene, også hadde ansvar for å styre etter dem og dømme etter dem, ville altfor mye makt ligge hos noen få personer. Derfor bygget Grunnloven av 1814 på <strong>maktfordelingsprinsippet</strong>, der statens makt deles mellom tre grener:
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-4 mb-8">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Lovgivende makt</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Stortinget</h3>
+            <p class="text-xs text-nordic-muted leading-relaxed">De 169 representantene vedtar lover, fastsetter statsbudsjettet og kontrollerer regjeringen.</p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Utøvende makt</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Regjeringen</h3>
+            <p class="text-xs text-nordic-muted leading-relaxed">Leder landet i det daglige, foreslår som oftest nye lover eller lovendringer, og setter Stortingets vedtak ut i livet.</p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Dømmende makt</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Domstolene</h3>
+            <p class="text-xs text-nordic-muted leading-relaxed">Dømmer i rettssaker etter loven og vurderer om lover er i strid med Grunnloven.</p>
+          </div>
+        </div>
+
+        <!-- Illustrasjon: De tre statsmaktene og maktbalansen -->
+        <figure class="rounded-2xl bg-white border border-nordic-border p-5 sm:p-6 mb-8 shadow-2xs">
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-nordic-accent">Illustrasjon</span>
+              <h3 class="text-base font-semibold text-nordic-ink">Maktfordelingsprinsippet: De tre statsmaktene i samspill</h3>
+            </div>
+          </div>
+          <svg viewBox="0 0 800 430" class="w-full h-auto" role="img" aria-label="Illustrasjon av maktfordelingsprinsippet mellom lovgivende, utøvende og dømmende makt">
+            <defs>
+              <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#0F766E" />
+              </marker>
+              <marker id="arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 1 L 10 5 L 0 9 z" fill="#526066" />
+              </marker>
+            </defs>
+
+            <!-- Bakgrunnsfelt -->
+            <rect x="0" y="0" width="800" height="430" rx="16" fill="#F8F9F8" />
+
+            <!-- Folket / Velgerne øverst -->
+            <rect x="275" y="20" width="250" height="54" rx="12" fill="#E6F4F1" stroke="#0F766E" stroke-width="1.5" />
+            <text x="400" y="43" text-anchor="middle" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="#115E59">FOLKET (VELGERNE)</text>
+            <text x="400" y="61" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" fill="#526066">Stortingsvalg hvert 4. år</text>
+
+            <!-- Pil fra Folket til Stortinget -->
+            <line x1="400" y1="74" x2="400" y2="112" stroke="#0F766E" stroke-width="2" marker-end="url(#arrow-teal)" />
+
+            <!-- 1. LOVGIVENDE MAKT: STORTINGET (topp av trekant) -->
+            <rect x="240" y="118" width="320" height="92" rx="14" fill="#FFFFFF" stroke="#0F766E" stroke-width="2" />
+            <text x="400" y="142" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0F766E">LOVGIVENDE &amp; BEVILGENDE MAKT</text>
+            <text x="400" y="164" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#182226">Stortinget (169 repr.)</text>
+            <text x="400" y="185" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">Vedtar lover, statsbudsjett og</text>
+            <text x="400" y="200" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">kontrollerer regjeringen</text>
+
+            <!-- 2. UTØVENDE MAKT: REGJERINGEN (nede venstre) -->
+            <rect x="45" y="295" width="300" height="106" rx="14" fill="#FFFFFF" stroke="#E2E8E6" stroke-width="2" />
+            <text x="195" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0F766E">UTØVENDE MAKT</text>
+            <text x="195" y="342" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#182226">Regjeringen</text>
+            <text x="195" y="364" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">Leder landet i det daglige, fremmer</text>
+            <text x="195" y="379" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">lov- og budsjettforslag og</text>
+            <text x="195" y="394" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">setter vedtak ut i livet</text>
+
+            <!-- 3. DØMMENDE MAKT: DOMSTOLENE (nede høyre) -->
+            <rect x="455" y="295" width="300" height="106" rx="14" fill="#FFFFFF" stroke="#E2E8E6" stroke-width="2" />
+            <text x="605" y="320" text-anchor="middle" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="#0F766E">DØMMENDE MAKT</text>
+            <text x="605" y="342" text-anchor="middle" font-family="Inter, sans-serif" font-size="16" font-weight="700" fill="#182226">Domstolene</text>
+            <text x="605" y="364" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">Uavhengige dommere som dømmer</text>
+            <text x="605" y="379" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">etter loven og prøver om vedtak</text>
+            <text x="605" y="394" text-anchor="middle" font-family="Inter, sans-serif" font-size="11.5" fill="#526066">er i tråd med Grunnloven</text>
+
+            <!-- Piler mellom Stortinget og Regjeringen -->
+            <line x1="300" y1="210" x2="215" y2="289" stroke="#0F766E" stroke-width="1.8" marker-end="url(#arrow-teal)" marker-start="url(#arrow-teal)" />
+            <rect x="148" y="232" width="176" height="36" rx="6" fill="#F8F9F8" />
+            <text x="236" y="247" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#182226">Parlamentarisme &amp; kontroll</text>
+            <text x="236" y="261" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#526066">Tillit ↔ Lov- og budsjettforslag</text>
+
+            <!-- Piler mellom Stortinget og Domstolene -->
+            <line x1="500" y1="210" x2="585" y2="289" stroke="#526066" stroke-width="1.8" marker-end="url(#arrow-muted)" marker-start="url(#arrow-muted)" />
+            <rect x="476" y="232" width="176" height="36" rx="6" fill="#F8F9F8" />
+            <text x="564" y="247" text-anchor="middle" font-family="Inter, sans-serif" font-size="10.5" font-weight="600" fill="#182226">Lover &amp; Grunnlov</text>
+            <text x="564" y="261" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" fill="#526066">Gir lover ↔ Prøver lover</text>
+
+            <!-- Pil mellom Regjeringen og Domstolene -->
+            <line x1="351" y1="348" x2="449" y2="348" stroke="#526066" stroke-width="1.8" marker-end="url(#arrow-muted)" marker-start="url(#arrow-muted)" />
+            <rect x="358" y="330" width="84" height="34" rx="6" fill="#F8F9F8" />
+            <text x="400" y="344" text-anchor="middle" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="#182226">Balanse</text>
+            <text x="400" y="357" text-anchor="middle" font-family="Inter, sans-serif" font-size="9.5" fill="#526066">Utnevner ↔ Kontrollerer</text>
+          </svg>
+          <figcaption class="mt-3 text-xs text-nordic-muted">
+            Grunnloven av 1814 deler statsmakten i tre uavhengige grener som både samarbeider og kontrollerer hverandre for å hindre maktmisbruk.
+          </figcaption>
+        </figure>
+
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 mb-6">
+          <h3 class="text-lg font-semibold text-nordic-ink mb-2">Parlamentarisme og mindretallsregjering</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Ordet <strong>parlamentarisme</strong> kommer av <em>parlament</em> (nasjonalforsamling). Da systemet ble innført med Johan Sverdrups regjering i 1884, ble den utøvende makten (regjeringen) gjort direkte avhengig av tillit fra den lovgivende makten (Stortinget). Ingen kan sitte i både regjering og Storting samtidig: dersom en stortingsrepresentant blir statsråd, trer en <em>vararepresentant</em> fra samme parti og valgdistrikt inn i salen. Vi har fortsatt et system der makt balanserer makt, og den dømmende makten kan for eksempel stille regjeringsmedlemmer for <strong>riksrett</strong> dersom loven brytes.
+          </p>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Når ett eller flere partier i regjering har mer enn halvparten av stortingsrepresentantene (minst 85 av 169) bak seg, kaller vi det en <em>flertallsregjering</em>. Når regjeringspartiet eller -partiene derimot har færre enn 85 mandater, har vi en <strong>mindretallsregjering</strong>.
+          </p>
+          <div class="rounded-xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-4 text-sm text-nordic-ink/90 mb-5">
+            <strong>Dagens situasjon (2025–2029):</strong> Statsminister <strong>Jonas Gahr Støre</strong> leder en <strong>mindretallsregjering</strong> utgått kun fra <strong>Arbeiderpartiet</strong>. Fordi Arbeiderpartiet har 53 mandater på Stortinget, mangler regjeringen eget flertall. Den må derfor forhandle med andre partier fra sak til sak for å få vedtatt statsbudsjettet og nye lover.
+          </div>
+
+          <h4 class="text-sm font-semibold text-nordic-ink mb-3">Pressmidler mellom Storting og regjering</h4>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h5 class="font-semibold text-nordic-ink mb-1">Mistillitsforslag (Stortingets pressmiddel)</h5>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Dersom Stortinget mister tilliten til regjeringen – for eksempel fordi den har holdt tilbake informasjon – kan et flertall vedta et <strong>mistillitsforslag</strong>, og regjeringen må gå av. Sist dette skjedde var mot Einar Gerhardsens regjering i 1963 etter Kings Bay-ulykken (76 mot 74 stemmer), men bare trusselen om mistillit fungerer som et sterkt pressmiddel.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h5 class="font-semibold text-nordic-ink mb-1">Kabinettsspørsmål og ingen nyvalg</h5>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Regjeringens sterkeste pressmiddel er <strong>kabinettsspørsmål</strong>: å true med å gå av dersom den ikke får flertall i en bestemt sak (som Bondevik-regjeringen gjorde om gasskraft i år 2000). Til forskjell fra mange andre land tillater ikke den norske Grunnloven å oppløse Stortinget og skrive ut nyvalg mellom ordinære valg – en ny regjering må derfor dannes av det sittende Stortinget.
+              </p>
+            </div>
+          </div>
+          <p class="text-[11px] text-nordic-muted mt-3">
+            Kilde: NDLA – <em>Parlamentarisme</em>.
+          </p>
+        </div>
+
+        <!-- Den fjerde statsmakt -->
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 mb-6">
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Motmakt i offentligheten</span>
+          <h3 class="text-lg font-semibold text-nordic-ink mb-2">«Den fjerde statsmakt» – mediene</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed">
+            Mediene vokste frem som en viktig samfunnsaktør etter Montesquieus tid. Selv om mediene drives uavhengig av staten og ikke er en formell statsmakt, har de stor innflytelse i offentligheten. Medienes selvpålagte rolle som kritisk vaktbikkje som avslører maktmisbruk, gjør at de ofte kalles <strong>«den fjerde statsmakt»</strong>.
+          </p>
+          <p class="text-[11px] text-nordic-muted mt-3">
+            Kilde: NDLA – <em>Maktfordeling</em>.
+          </p>
+        </div>
+
+        <!-- Eksempel: Når den lovgivende makten bryter loven -->
+        <div class="rounded-2xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-6">
+          <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accentDark mb-1">Eksempel fra Norge • Maktfordeling i praksis</span>
+          <h3 class="text-lg font-semibold text-nordic-ink mb-2">Når de som vedtar lovene selv bryter loven</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Hvorfor er det så viktig at domstolene (den dømmende makten) er helt uavhengige av Stortinget (den lovgivende makten)? Flere norske saker viser hvordan maktfordelingen og «den fjerde statsmakt» fungerer når folkevalgte lovgivere selv bryter loven:
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 rounded-xl bg-white border border-nordic-border">
+              <h4 class="font-semibold text-nordic-ink mb-1">Mazyar Keshvari (FrP) – dømt i 2020</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                I 2018 avslørte avisen <em>Aftenposten</em> at stortingsrepresentanten hadde levert 73 fiktive reiseregninger til Stortinget for rundt 450 000 kroner. Stortinget anmeldte saken, og i oktober 2020 skjerpet <strong>Høyesterett</strong> straffen til 8 måneders ubetinget fengsel for grovt bedrageri.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-white border border-nordic-border">
+              <h4 class="font-semibold text-nordic-ink mb-1">Hege Haukeland Liadal (Ap) – dømt i 2022</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Etter nye presseavsløringer i 2019 om falske reiseregninger for private reiser og hytteopphold ble den tidligere stortingsrepresentanten tiltalt for grovt bedrageri. I januar 2022 ble hun dømt i <strong>Oslo tingrett</strong> til 7 måneders fengsel og tilbakebetaling.
+              </p>
+            </div>
+          </div>
+          <p class="text-xs text-nordic-muted mt-4 leading-relaxed">
+            Sakene viser samspillet i norsk demokrati: frie medier avslørte forholdene, Stortinget anmeldte egne representanter og strammet inn kontrollrutinene, og uavhengige domstoler slo fast at også lovgivere straffes etter de samme lovene som alle andre.
+          </p>
+        </div>
+      </section>
+
+      <!-- KAP 2: REGJERINGEN -->
+      <section id="kap2-regjeringen" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Regjeringen
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+          Etter et stortingsvalg er det formelt Kongen som peker ut hvem som skal danne regjering. Regjeringen ledes av <strong>statsministeren</strong>, som velger ut medlemmene av regjeringen – kalt <strong>statsråder</strong> eller ministre. Hver statsråd leder sitt eget fagdepartement (for eksempel Utenriksdepartementet eller Kunnskapsdepartementet).
+        </p>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Regjeringen styrer landet i det daglige, setter Stortingets lover ut i livet og foreslår statsbudsjettet for det kommende året. Hver fredag kl. 10.00 møtes regjeringen hos Kongen i <em>statsråd</em> for å signere lover og formelle vedtak. Regjeringen sitter vanligvis én valgperiode (fire år), med mindre Stortinget vedtar mistillit mot den.
+        </p>
+
+        <div class="rounded-2xl bg-white border border-nordic-border p-6">
+          <h3 class="text-lg font-semibold text-nordic-ink mb-4">Fire typer regjering</h3>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accent mb-1">Styrkeforhold 1</span>
+              <h4 class="font-semibold text-nordic-ink mb-1">Flertallsregjering</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Partiet eller partiene i regjering har mer enn halvparten av stortingsrepresentantene (minst 85 av 169) bak seg, slik som den rødgrønne regjeringen (2005–2013) og regjeringen Solberg fra januar 2019 til januar 2020. Da er det enkelt å få flertall for egen politikk.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accent mb-1">Styrkeforhold 2</span>
+              <h4 class="font-semibold text-nordic-ink mb-1">Mindretallsregjering</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Regjeringen har færre enn 85 mandater og må søke støtte i Stortinget fra sak til sak. Det gir Stortinget mer makt. Regjeringen Støre (2021–d.d.) startet med Ap og Sp, men etter at Sp trakk seg i januar 2025 og etter valget i 2025, styrer Ap alene i mindretall med støtte fra Rødt, SV, Sp og MDG.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accent mb-1">Sammensetning 1</span>
+              <h4 class="font-semibold text-nordic-ink mb-1">Ettpartiregjering</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Kun ett parti sitter i regjering – slik Arbeiderpartiet gjorde under Einar Gerhardsen på 1950-tallet, og slik Jonas Gahr Støres Ap-regjering gjør etter at Senterpartiet gikk ut i januar 2025.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accent mb-1">Sammensetning 2</span>
+              <h4 class="font-semibold text-nordic-ink mb-1">Koalisjonsregjering</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Flere partier går sammen i regjering og forhandler frem en felles <em>samarbeidserklæring</em>. Mellom 2001 og januar 2025 hadde Norge utelukkende <strong>koalisjonsregjeringer</strong>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <figure class="my-6">
+          <img
+            src="images/maktbalansen.jpg"
+            alt="Illustrasjon av maktbalansen i norsk politikk i dag: Arbeiderpartiets mindretallsregjering med parlamentarisk grunnlag fra MDG, Rødt, SV og Sp mot opposisjonen"
+            class="w-full h-auto rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            Maktbalansen i dag: Arbeiderpartiet styrer alene i mindretallsregjering etter at Sp gikk ut i januar 2025, og må søke støtte hos MDG, Rødt, SV og Sp for å få flertall mot opposisjonen.
+          </figcaption>
+        </figure>
+
+        <p class="text-[11px] text-nordic-muted mt-3">
+          Kilde: NDLA – <em>Regjeringen</em>.
+        </p>
+      </section>
+
+      <!-- KAP 2: STORTINGET OG VALGORDNINGEN 2025-2029 -->
+      <section id="kap2-stortinget" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Stortinget og valgordningen (2025–2029)
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+          Stortingsvalg holdes hvert fjerde år, og alle norske statsborgere som fyller 18 år i valgåret har stemmerett (enten ved forhåndsstemme eller på valgdagen). Velgeren legger en partiliste i valgurnen, der kandidatene øverst på listen har størst sjanse til å bli valgt inn blant de <strong>169 stortingsrepresentantene</strong>.
+        </p>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Norge er delt inn i <strong>19 valgdistrikter</strong> (som i hovedsak tilsvarer fylkesinndelingen før regionreformen, selv om Norge har 15 fylker fra 2024). Av mandatene er 150 <em>distriktsmandater</em> og 19 <strong>utjevningsmandater</strong>. Fordi ordningen skal balansere flere politiske hensyn, veier ikke hver enkelt stemme helt likt matematisk.
+        </p>
+
+        <!-- Overordnede hensyn i valgordningen -->
+        <div class="grid sm:grid-cols-3 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Hensyn 1</span>
+            <h3 class="font-semibold text-nordic-ink mb-1.5">Velgernes vilje</h3>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Gjennom <em>direkte valg</em> og <em>forholdstallsvalg</em> får partilistene omtrent samme andel distriktsmandater som stemmer. De 19 <strong>utjevningsmandatene</strong> retter opp skjevheter mellom partiene på landsbasis.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Hensyn 2</span>
+            <h3 class="font-semibold text-nordic-ink mb-1.5">Styringsdyktig flertall</h3>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              For å hindre at svært mange småpartier gjør det vanskelig å danne regjering, gjelder <strong>sperregrensen</strong> på <strong>4 %</strong>: bare partier med minst 4 % oppslutning nasjonalt får være med i fordelingen av utjevningsmandater.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Hensyn 3</span>
+            <h3 class="font-semibold text-nordic-ink mb-1.5">Distriktsinteresser</h3>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Gjennom <strong>arealfaktoren</strong> bestemmes antall mandater per valgdistrikt ikke bare av folketallet, men også av distriktets geografiske størrelse, slik at tynt befolkede områder sikres representasjon.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-4 text-xs sm:text-sm text-nordic-ink/90 mb-8 space-y-1.5">
+          <p><strong>Tenk over:</strong> Hvilke argumenter finnes for og mot <em>arealfaktoren</em>, og burde <em>sperregrensen</em> på 4 % vært høyere, lavere eller fjernet helt?</p>
+          <p class="text-xs text-nordic-muted">
+            Prøv selv: På <a href="https://lavinia.no/" target="_blank" rel="noopener noreferrer" class="underline text-nordic-accentDark hover:text-nordic-accent font-medium">lavinia.no</a> kan du eksperimentere med ulike valgordninger og se hvordan sperregrense og arealfaktor påvirker resultatet.
+          </p>
+        </div>
+
+        <!-- Ny figur: Mandatfordeling på Stortinget 2025–2029 -->
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 shadow-2xs">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-nordic-accent">Stortingsvalget 2025</span>
+              <h3 class="text-lg font-semibold text-nordic-ink">Mandatfordeling på Stortinget (2025–2029)</h3>
+            </div>
+            <span class="text-xs font-medium text-nordic-muted">Totalt 169 mandater (85 kreves for flertall)</span>
+          </div>
+
+          <!-- Proporsjonal parlament-linje -->
+          <div class="h-4 w-full rounded-full overflow-hidden flex mb-6 bg-nordic-bg">
+            <div style="width: 5.33%" class="bg-rose-700" title="Rødt: 9"></div>
+            <div style="width: 5.33%" class="bg-rose-600" title="SV: 9"></div>
+            <div style="width: 31.36%" class="bg-rose-500" title="Ap: 53"></div>
+            <div style="width: 4.73%" class="bg-green-600" title="MDG: 8"></div>
+            <div style="width: 5.33%" class="bg-emerald-600" title="Sp: 9"></div>
+            <div style="width: 4.14%" class="bg-amber-400" title="KrF: 7"></div>
+            <div style="width: 1.78%" class="bg-teal-600" title="Venstre: 3"></div>
+            <div style="width: 14.20%" class="bg-sky-600" title="Høyre: 24"></div>
+            <div style="width: 27.81%" class="bg-blue-800" title="FrP: 47"></div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-sm">
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>Arbeiderpartiet (Ap)
+              </span>
+              <span class="font-bold text-nordic-ink">53</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-blue-800"></span>Fremskrittspartiet (FrP)
+              </span>
+              <span class="font-bold text-nordic-ink">47</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-sky-600"></span>Høyre (H)
+              </span>
+              <span class="font-bold text-nordic-ink">24</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-rose-600"></span>SV
+              </span>
+              <span class="font-bold text-nordic-ink">9</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-emerald-600"></span>Senterpartiet (Sp)
+              </span>
+              <span class="font-bold text-nordic-ink">9</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-rose-700"></span>Rødt
+              </span>
+              <span class="font-bold text-nordic-ink">9</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-green-600"></span>MDG
+              </span>
+              <span class="font-bold text-nordic-ink">8</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-amber-400"></span>KrF
+              </span>
+              <span class="font-bold text-nordic-ink">7</span>
+            </div>
+            <div class="flex items-center justify-between rounded-xl bg-nordic-bg px-3.5 py-2.5">
+              <span class="flex items-center gap-2 font-medium text-nordic-ink">
+                <span class="h-2.5 w-2.5 rounded-full bg-teal-600"></span>Venstre (V)
+              </span>
+              <span class="font-bold text-nordic-ink">3</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Stortingets oppgaver, organisering, komiteer, debatt og budsjett -->
+        <div class="mt-8 space-y-6">
+          <div class="rounded-2xl bg-white border border-nordic-border p-6">
+            <h3 class="text-lg font-semibold text-nordic-ink mb-3">Stortingets viktigste oppgaver</h3>
+            <div class="grid sm:grid-cols-3 gap-4 text-sm">
+              <div class="p-4 rounded-xl bg-nordic-bg">
+                <h4 class="font-semibold text-nordic-ink mb-1">Lovgivende makt</h4>
+                <p class="text-xs text-nordic-muted leading-relaxed">
+                  Vedtar, endrer og opphever lover. De fleste er <strong>rammelover</strong> (fullmaktslover), der regjeringen får ansvar for å utarbeide nærmere forskrifter.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl bg-nordic-bg">
+                <h4 class="font-semibold text-nordic-ink mb-1">Bevilgende makt</h4>
+                <p class="text-xs text-nordic-muted leading-relaxed">
+                  Vedtar statsbudsjettet hvert år – statens samlede inntekter og utgifter – og fastsetter skatter, avgifter og økonomiske rammer.
+                </p>
+              </div>
+              <div class="p-4 rounded-xl bg-nordic-bg">
+                <h4 class="font-semibold text-nordic-ink mb-1">Kontrollerende makt</h4>
+                <p class="text-xs text-nordic-muted leading-relaxed">
+                  Passer på at regjeringen følger opp Stortingets vedtak, blant annet gjennom kontroll- og konstitusjonskomiteen og eksterne organer som <strong>Riksrevisjonen</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-white border border-nordic-border p-6">
+              <h3 class="text-base font-semibold text-nordic-ink mb-2">Stortingets organisering</h3>
+              <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+                Når de 169 representantene samles etter valget, velger de en <em>stortingspresident</em> som leder arbeidet og debattene. Representantene fra hvert parti danner en <em>partigruppe</em> ledet av et gruppestyre og en <em>parlamentarisk leder</em>.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white border border-nordic-border p-6">
+              <h3 class="text-base font-semibold text-nordic-ink mb-2">12 fagkomiteer</h3>
+              <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+                Alle representantene sitter i én av Stortingets 12 <em>fagkomiteer</em>, som gjenspeiler partifordelingen i salen. Komiteene forbereder sakene (som regel fremmet av regjeringen) og avgir en <em>innstilling</em> før saken avgjøres i plenum – derfor er komiteene viktige arenaer for påvirkning.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="rounded-2xl bg-white border border-nordic-border p-6">
+              <h3 class="text-base font-semibold text-nordic-ink mb-2">Arena for politisk debatt</h3>
+              <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+                Fordi arbeidet i komiteer og partigrupper skjer bak lukkede dører, er de åpne debattene i stortingssalen viktige for innsyn. Sentrale arenaer er <em>trontaledebatten</em> ved sesjonsstart, <em>finansdebatten</em> om statsbudsjettet og <em>muntlig spørretime</em> der statsrådene svarer direkte på spørsmål.
+              </p>
+            </div>
+            <div class="rounded-2xl bg-white border border-nordic-border p-6">
+              <h3 class="text-base font-semibold text-nordic-ink mb-2">Budsjettarbeidet gjennom året</h3>
+              <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+                Regjeringen legger hovedrammene på budsjettkonferansen i mars, finpusser profilen i august/september og legger frem budsjettforslaget for Stortinget i starten av oktober. Senest 15. mai legger regjeringen frem <em>Revidert nasjonalbudsjett</em> med justeringer for inneværende år.
+              </p>
+            </div>
+          </div>
+          <p class="text-[11px] text-nordic-muted">
+            Kilde: NDLA – <em>Stortinget</em>.
+          </p>
+        </div>
+      </section>
+
+      <!-- KAP 2: STYRINGSNIVÅENE -->
+      <section id="kap2-styringsnivaene" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Styringsnivåene i Norge
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Norge styres på tre nivåer: <strong>staten</strong> (nasjonalt nivå), <strong>fylkeskommunene</strong> (regionalt nivå) og <strong>kommunene</strong> (lokalt nivå). Staten består av Stortinget, regjeringen og statsforvaltningen og har det overordnede ansvaret for lover og politikk, men har delegert mange viktige oppgaver til fylkene og kommunene.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-4">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Nasjonalt nivå</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Staten</h3>
+            <p class="text-xs text-nordic-muted">Stortinget, regjeringen og statsforvaltningen. Vedtar lover, nasjonale rammer og driver overordnede tjenester.</p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-4">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Regionalt nivå</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Fylkeskommunene</h3>
+            <p class="text-xs text-nordic-muted">Har ansvar for oppgaver som går på tvers av kommuner, som videregående skole, fylkesveier og kollektivtransport.</p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-4">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Lokalt nivå</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Kommunene</h3>
+            <p class="text-xs text-nordic-muted">Står nærmest innbyggerne i hverdagen, med ansvar for blant annet barnehage, grunnskole, fastlege og eldreomsorg.</p>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto rounded-2xl border border-nordic-border bg-white shadow-2xs">
+          <table class="w-full text-left text-xs sm:text-sm border-collapse">
+            <thead>
+              <tr class="bg-nordic-bg border-b border-nordic-border text-nordic-ink">
+                <th class="p-4 font-semibold w-40">Område</th>
+                <th class="p-4 font-semibold">Kommune <span class="block text-[11px] font-normal text-nordic-muted">Lokalt</span></th>
+                <th class="p-4 font-semibold">Fylke <span class="block text-[11px] font-normal text-nordic-muted">Regionalt</span></th>
+                <th class="p-4 font-semibold">Stat <span class="block text-[11px] font-normal text-nordic-muted">Nasjonalt (eksempler)</span></th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-nordic-border text-nordic-ink/90 align-top">
+              <tr>
+                <td class="p-4 font-semibold text-nordic-ink">Utdanning</td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Barnehage og grunnskole</li>
+                    <li>Skolefritidsordning (SFO)</li>
+                    <li>Spesialundervisning for funksjonshemmede</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Videregående skole</li>
+                    <li>Voksenopplæring</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Læreplaner og Lånekassen</li>
+                    <li>Universiteter og høyskoler</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-nordic-ink">Helse og sosial</td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Allmennlege, legevakt og skolehelsetjeneste</li>
+                    <li>Jordmortjeneste, hjemmesykepleie og alders-/sykehjem</li>
+                    <li>Barnevern og sosialhjelp (NAV)</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Tannhelsetjeneste</li>
+                    <li>Integrering av innvandrere (opplæring, sysselsetting, forebygging av negativ sosial kontroll)</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Sykehus</li>
+                    <li>Arbeid, trygd og pensjon (NAV)</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-nordic-ink">Samferdsel og tekniske oppgaver</td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Lokale veier, vann, kloakk og renovasjon</li>
+                    <li>Brann- og feiervesen</li>
+                    <li>Planmyndighet og lokalt miljøvern</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Fylkesveier og Vegvesenet</li>
+                    <li>Skoleskyss og trafikksikkerhet</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Riks- og europaveier, jernbane og luftfart</li>
+                    <li>Kystverket, post, strømnett og Statens kartverk</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-nordic-ink">Kultur og fritid</td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Kirker og kirkegårder</li>
+                    <li>Fritidsklubber og folkebibliotek</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Fylkesbibliotek</li>
+                    <li>Kulturminner</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Nasjonalbiblioteket og NRK</li>
+                    <li>Nationaltheatret og Den Norske Opera &amp; Ballett</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-nordic-ink">Næringsliv og landbruk</td>
+                <td class="p-4">
+                  <p class="text-xs text-nordic-muted">Legger som regel til rette for næringsutvikling lokalt, men har ingen lovpålagte oppgaver.</p>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Etablerertilskudd</li>
+                  </ul>
+                </td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Rammer og tilskudd til næringsliv, fiskeri og landbruk</li>
+                    <li>Statlige selskaper: Statskog, Statkraft, Enova, Mesta, Equinor (67 %), Telenor (54 %)</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td class="p-4 font-semibold text-nordic-ink">Andre oppgaver</td>
+                <td class="p-4 text-xs text-nordic-muted">—</td>
+                <td class="p-4 text-xs text-nordic-muted">—</td>
+                <td class="p-4">
+                  <ul class="list-disc list-inside space-y-1 text-xs">
+                    <li>Lover, utenrikspolitikk, forsvar, politi og domstoler</li>
+                    <li>Arbeidstilsynet, Mattilsynet og Skatteetaten</li>
+                    <li>Bistand, klimapolitikk og miljøvern</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-[11px] text-nordic-muted mt-3">
+          Kilde: NDLA – <em>Styringsnivåene</em>.
+        </p>
+      </section>
+
+      <!-- KAP 2: KOMMUNENE -->
+      <section id="kap2-kommunene" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Kommunene
+        </h2>
+        <figure class="my-5">
+          <img
+            src="images/radhus.jpg"
+            alt="Oslo rådhus"
+            class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            Oslo rådhus – Oslo er både en kommune og en fylkeskommune. Foto: Ryan Hodnett (CC BY-SA 4.0, Wikimedia Commons).
+          </figcaption>
+        </figure>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+          Alle bor i en kommune og bruker kommunale tjenester hver dag – enten det er grunnskole, fastlege, idrettsanlegg eller sykehjem. Norske kommuner har hatt lokalt selvstyre helt siden <strong>formannskapslovene</strong> ble vedtatt i 1837, og i nordiske land har kommunene et større ansvar for velferdspolitikken enn i mange andre europeiske land.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Generalistkommuner</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Alle norske kommuner (356 etter kommunereformen 2014–2020) er <strong>generalistkommuner</strong>: de skal tilby de samme tjenestene med samme kvalitet uavhengig av folketall og størrelse. Små kommuner løser ofte krevende oppgaver gjennom <em>interkommunalt samarbeid</em>.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Kommunens nære oppgaver</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Tanken bak lokaldemokratiet er at de som bor i kommunen kjenner de lokale behovene best. Kommunen har derfor ansvar for lokale tjenester innen utdanning, helse og sosial, tekniske tjenester, samt kultur og fritid.
+            </p>
+          </div>
+        </div>
+
+        <!-- Kommunenes inntekter -->
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 mb-6">
+          <h3 class="text-lg font-semibold text-nordic-ink mb-3">Kommunenes inntekter</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Kommunene finansierer tjenestene sine gjennom tre hovedtyper inntekter:
+          </p>
+          <div class="grid sm:grid-cols-3 gap-4 text-sm mb-4">
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h4 class="font-semibold text-nordic-ink mb-1">1. Frie inntekter</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Skatteinntekter (person- og eventuell eiendomsskatt) og statlige rammetilskudd som jevner ut forskjeller mellom kommunene. Kommunestyret bestemmer fritt hvordan disse skal brukes (rundt 75–80 % av inntektene).
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h4 class="font-semibold text-nordic-ink mb-1">2. Kommunale avgifter</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Betaling fra innbyggerne for spesifikke tjenester som vann, avløp og renovasjon. Avgiftene har ikke lov til å overstige kommunens reelle kostnader.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h4 class="font-semibold text-nordic-ink mb-1">3. Øremerkede tilskudd</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Statlige penger som er bundet til bestemte formål. Partiene er uenige om hvor mye som bør være <strong>øremerkede tilskudd</strong> versus frie midler (FrP har særlig etterlyst mer øremerking).
+              </p>
+            </div>
+          </div>
+          <p class="text-xs text-nordic-accentDark bg-nordic-accentSoft/60 rounded-lg px-3.5 py-2.5">
+            <strong>Lokalt eksempel (Skien kommune, 2026):</strong> Skien har eiendomsskatt. For 2026 vedtok bystyret 3,9 promille på bolig-, landbruk- og fritidseiendommer (med 70 % reduksjonsfaktor og 650 000 kr i bunnfradrag per boenhet), og 3,2 promille på næringseiendommer og ubebygde tomter.
+          </p>
+        </div>
+
+        <!-- Styringsmodeller i kommunene -->
+        <div class="rounded-2xl bg-white border border-nordic-border p-6">
+          <h3 class="text-lg font-semibold text-nordic-ink mb-3">Hvordan styres kommunen? To modeller</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Hvert fjerde år er det lokalvalg til kommunestyret eller bystyret, som er kommunens øverste politiske organ. Kommunene kan velge mellom to ulike styringsmodeller:
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm mb-4">
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h4 class="font-semibold text-nordic-ink mb-1">Formannskapsmodellen</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Brukes av de fleste kommuner. Et arbeidsutvalg (formannskapet) på minst fem representanter velges forholdsmessig fra kommunestyret for hele perioden. <strong>Ordføreren</strong> er øverste politiske leder, mens en ansatt kommunedirektør (rådmann) leder administrasjonen – med et tydelig skille mellom politikk og administrasjon.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h4 class="font-semibold text-nordic-ink mb-1">Den parlamentariske modellen</h4>
+              <p class="text-xs text-nordic-muted leading-relaxed">
+                Brukes i dag (2024–2026) kun av Norges tre største bykommuner: <strong>Oslo</strong>, <strong>Bergen</strong> og <strong>Trondheim</strong> (Trondheim innførte ordningen i juni 2024; tillatt siden kommuneloven av 1992). Kommunen styres av et <strong>byråd</strong> ledet av en <em>byrådsleder</em>, som har det samlede ansvaret for administrasjonen og må ha flertallets tillit i bystyret – akkurat som regjeringen og Stortinget. Ordføreren får da en rolle som tilsvarer stortingspresidenten.
+              </p>
+            </div>
+          </div>
+          <div class="p-4 rounded-xl bg-nordic-bg/70 border border-nordic-border text-xs text-nordic-muted leading-relaxed mb-4">
+            <strong class="text-nordic-ink">Hvorfor bruker ikke alle kommuner parlamentarisme?</strong>
+            <ul class="list-disc list-inside mt-1.5 space-y-1">
+              <li><strong>Kostnader og størrelse:</strong> Et byråd krever heltidsansatte politikere (byråder) som leder hver sin sektor. Det er dyrt og upraktisk i små og mellomstore kommuner.</li>
+              <li><strong>Bredt samarbeid vs. posisjon/opposisjon:</strong> I formannskapsmodellen sitter alle større partier i formannskapet og søker brede kompromisser. Parlamentarisme skaper et skarpere skille mellom flertall (byråd) og opposisjon, og kan gi hyppigere politiske kriser hvis byrådet mister flertallet.</li>
+              <li><strong>Tradisjon og stabilitet:</strong> Formannskapsmodellen har røtter tilbake til 1837 og gir et tydelig skille mellom politikere og en nøytral administrasjon ledet av kommunedirektøren.</li>
+            </ul>
+          </div>
+          <p class="text-xs text-nordic-accentDark bg-nordic-accentSoft/60 rounded-lg px-3.5 py-2.5 mb-4">
+            <strong>Lokalt eksempel (Skien kommune):</strong> Skien styres etter <strong>formannskapsmodellen</strong>. Bystyret har 55 folkevalgte representanter, og i perioden 2023–2027 er <strong>Marius Roheim Aarvold (H)</strong> ordfører og Jørn Inge Næss (FrP) varaordfører.
+          </p>
+          <figure>
+            <img
+              src="images/skien-radhus.jpg"
+              alt="Skien rådhus og Rådhusplassen"
+              class="w-full h-auto max-h-[360px] object-cover rounded-xl shadow-md border border-nordic-border"
+              loading="lazy"
+            />
+            <figcaption class="mt-2 text-xs text-nordic-muted">
+              Skien rådhus og Rådhusplassen – her møtes bystyret og formannskapet i Skien kommune. Foto: Helge Høifødt (CC BY-SA 4.0, Wikimedia Commons).
+            </figcaption>
+          </figure>
+        </div>
+        <p class="text-[11px] text-nordic-muted mt-3">
+          Kilde: NDLA – <em>Kommunene</em>.
+        </p>
+      </section>
+
+      <!-- KAP 2: FYLKESKOMMUNENE -->
+      <section id="kap2-fylkeskommunene" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Fylkeskommunene
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Mellom stat og kommune ligger det regionale styringsnivået: <strong>fylkeskommunen</strong>. Fra 1. januar 2024 har Norge <strong>15 fylker</strong> (Oslo er både kommune og fylkeskommune). Ved regionreformen i 2020 ble antall fylker redusert fra 19 til 11 for å gi større kapasitet og flere oppgaver, men etter stor motstand ble tre av de sammenslåtte fylkene delt opp igjen i 2024.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Fylkesting og styring</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Det øverste folkevalgte organet er <strong>fylkestinget</strong>, med <em>fylkesordføreren</em> som politisk leder og <em>fylkesutvalget</em> som tilsvarer kommunens formannskap. Enkelte fylkeskommuner bruker en parlamentarisk modell der et <strong>fylkesråd</strong> fungerer som «regjering» overfor fylkestinget.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Ansvarsområder og fylkesdirektør</span>
+            <p class="text-sm text-nordic-muted leading-relaxed">
+              Administrasjonen ledes av en <em>fylkesdirektør</em> med fagavdelinger for blant annet videregående opplæring, tannhelse, fylkesveier, kulturminner, samt integrering og sysselsetting av innvandrere.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-5 text-sm text-nordic-ink/90 mb-5">
+          <h3 class="font-semibold text-nordic-ink mb-1">Statsforvalteren – statens representant i fylket</h3>
+          <p class="leading-relaxed">
+            Hvert fylke har en <strong>statsforvalter</strong> som representerer staten og kontrollerer at kommunene og fylkeskommunene følger statlige lover og vedtak. Dersom innbyggere mener at kommunen eller fylket bryter statlige regler, kan de klage til statsforvalteren.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-white border border-nordic-border p-5 text-sm text-nordic-ink/90">
+          <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accent mb-1">Lokalt eksempel • Telemark</span>
+          <h3 class="font-semibold text-nordic-ink mb-2">Telemark fylkeskommune og din skole</h3>
+          <figure class="my-3">
+            <img
+              src="images/hjalmar-vgs.jpg"
+              alt="Hjalmar Johansen videregående skole ved Skien Fritidspark"
+              class="w-full h-auto max-h-[360px] object-cover rounded-xl shadow-md border border-nordic-border"
+              loading="lazy"
+            />
+            <figcaption class="mt-2 text-xs text-nordic-muted">
+              Hjalmar Johansen videregående skole ved Skien Fritidspark – videregående opplæring er en av Telemark fylkeskommunes viktigste oppgaver.
+            </figcaption>
+          </figure>
+          <p class="text-nordic-muted leading-relaxed">
+            Telemark var ett av fylkene som ble gjenopprettet som eget fylke 1. januar 2024 etter oppløsningen av Vestfold og Telemark. Fylkeshuset ligger i <strong>Skien</strong>, og fylkesordfører er <strong>Terje Riis-Johansen (Sp)</strong>. Når du går på videregående skole i Skien (for eksempel <em>Skien videregående skole</em> eller <em>Hjalmar Johansen videregående skole</em>), er det Telemark fylkeskommune som eier og driver skolen, sørger for tannhelsetjeneste for unge og samarbeider med Skien kommune og staten om kollektivtransport gjennom <strong>Bypakke Grenland</strong>.
+          </p>
+        </div>
+        <p class="text-[11px] text-nordic-muted mt-3">
+          Kilde: NDLA – <em>Fylkeskommunene</em>.
+        </p>
+      </section>
+
+      <!-- KAP 2: KOMMUNESTYRE- OG FYLKESTINGSVALG -->
+      <section id="kap2-lokalvalg" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Kommunestyre- og fylkestingsvalg (lokalvalg)
+        </h2>
+        <figure class="my-5">
+          <img
+            src="images/valgurne.webp"
+            alt="Norsk valgurne i et valglokale"
+            class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            Norsk valgurne i et valglokale – hvert fjerde år velger innbyggerne representanter til kommunestyre og fylkesting.
+          </figcaption>
+        </figure>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Valg til kommunestyrer og fylkesting holdes samtidig hvert fjerde år, midtveis i stortingsperioden, på en mandag i første halvdel av september fastsatt av Kongen. Hver kommune og hvert fylke utgjør én valgkrets, og antall representanter bestemmes innenfor minstekravene i kommuneloven. I dag (2026) er vi inne i valgperioden <strong>2023–2027</strong>, og neste lokalvalg finner sted i <strong>september 2027</strong> – for første gang under den nye valgloven som trådte i kraft i 2024.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Valglister og kandidater</span>
+            <p class="text-sm text-nordic-muted leading-relaxed mb-2">
+              Alle politiske partier kan stille lister, og tverrpolitiske eller uavhengige grupper kan også stille dersom de samler nok underskrifter (minst 500 ved fylkestingsvalg, eller 2 % av de stemmeberettigede ved kommunestyrevalg).
+            </p>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Ved det siste lokalvalget (2023, gjeldende for perioden 2023–2027) stilte <strong>53 300</strong> kandidater, hvorav <strong>23 260</strong> var kvinner. Blant de største partiene hadde SV høyest kvinneandel (56 %), Rødt, MDG og Ap lå rundt 50 %, og FrP hadde lavest (27 %).
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Stemmerett og personpåvirkning</span>
+            <p class="text-sm text-nordic-muted leading-relaxed mb-2">
+              Du må fylle 18 år i valgåret og stå i manntallet i kommunen. I tillegg til norske statsborgere har nordiske statsborgere bosatt i Norge senest 30. juni i valgåret stemmerett, samt øvrige utenlandske statsborgere som har bodd i Norge de siste tre årene.
+            </p>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Velgere kan påvirke personvalget ved å gi personstemmer på listen de velger, og i kommunestyrevalg også ved å føre opp kandidater fra andre lister (<strong>slengere</strong>).
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white border border-nordic-border p-6">
+          <h3 class="text-lg font-semibold text-nordic-ink mb-2">Valgdeltakelse: «Hjemmesitterne»</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Valgdeltakelsen ved lokalvalg er tradisjonelt lavere enn ved stortingsvalg. Ved det siste lokalvalget i 2023 stemte <strong>62,2 %</strong> av de stemmeberettigede. Deltakelsen var lavere blant velgere med innvandrerbakgrunn enn i befolkningen for øvrig:
+          </p>
+          <div class="grid sm:grid-cols-3 gap-3 text-center text-sm">
+            <div class="rounded-xl bg-nordic-bg p-4">
+              <span class="block text-2xl font-bold text-nordic-ink">62,2 %</span>
+              <span class="text-xs text-nordic-muted">Samlet valgdeltakelse (2023)</span>
+            </div>
+            <div class="rounded-xl bg-nordic-bg p-4">
+              <span class="block text-2xl font-bold text-nordic-ink">38 %</span>
+              <span class="text-xs text-nordic-muted">Norske statsborgere med innvandrerbakgrunn (ned fra 45 % i 2019)</span>
+            </div>
+            <div class="rounded-xl bg-nordic-bg p-4">
+              <span class="block text-2xl font-bold text-nordic-ink">25 %</span>
+              <span class="text-xs text-nordic-muted">Utenlandske statsborgere med stemmerett (ned fra 32 % i 2019)</span>
+            </div>
+          </div>
+        </div>
+        <p class="text-[11px] text-nordic-muted mt-3">
+          Kilde: NDLA – <em>Kommunestyre- og fylkestingsvalg</em>, oppdatert med gjeldende valgperiode (2023–2027) og ny valglov (2024).
+        </p>
+      </section>
+
+      <!-- KAP 2: DEMOKRATI I USA -->
+      <section id="kap2-usa" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Demokrati i USA: Føderalisme og checks and balances
+        </h2>
+        <figure class="my-5">
+          <img
+            src="images/capitol.jpg"
+            alt="United States Capitol i Washington D.C."
+            class="w-full h-auto max-h-[420px] object-cover rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            Kongressbygningen (US Capitol) i Washington D.C. Foto: Martin Falbisoner (CC BY-SA 3.0, Wikimedia Commons).
+          </figcaption>
+        </figure>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+          Mens Norge er en enhetsstat med parlamentarisme, er USA en forbundsstat bygget på <strong>føderalisme</strong> og et strengt presidentstyre. <strong>Føderalisme</strong> betyr at makten er delt mellom den sentrale føderale regjeringen i Washington D.C. og de 50 delstatene, som hver har sine egne lover, guvernører og domstoler.
+        </p>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          På nasjonalt nivå styres USA av et system med <strong>checks and balances</strong> (makt- og ansvarsfordeling). Presidenten (den utøvende makten) velges direkte og uavhengig av Kongressen (den lovgivende makten, som består av Representantenes hus og Senatet), og kan ikke felles av et vanlig mistillitsvotum slik som i Norge.
+        </p>
+
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 mb-6">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-nordic-accentSoft text-nordic-accentDark">Mellomvalget november 2026</span>
+          </div>
+          <h3 class="text-lg font-semibold text-nordic-ink mb-2">Delt makt i praksis: President Trump mot en demokratisk Kongress</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Et tydelig eksempel på hvordan <strong>checks and balances</strong> fungerer i USA, kom etter mellomvalget i november 2026. Selv om republikaneren <strong>Donald Trump (R)</strong> sitter som president, vant <strong>Demokratene</strong> flertallet i Kongressen – blant annet med <strong>255 mot 167 seter i Representantenes hus</strong>.
+          </p>
+          <div class="grid sm:grid-cols-2 gap-4 text-sm">
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h4 class="font-semibold text-nordic-ink mb-1">Hvorfor vedtak er vanskeligere i USA</h4>
+              <p class="text-nordic-muted leading-relaxed">
+                Når presidenten og Kongressens flertall tilhører ulike partier, kan Kongressen blokkere presidentens lovforslag og budsjetter, mens presidenten kan legge ned veto mot Kongressens vedtak. Uten brede kompromisser stopper politikken lett opp.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-nordic-bg">
+              <h4 class="font-semibold text-nordic-ink mb-1">Forskjellen fra Norge</h4>
+              <p class="text-nordic-muted leading-relaxed">
+                I Norges parlamentariske system utgår regjeringen fra Stortinget og er avhengig av å kunne samarbeide med et flertall der. Selv en mindretallsregjering må finne støtte i Stortinget, ellers blir den byttet ut – derfor blir maktforholdet sjelden fastlåst på samme måte som i USA.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- KAP 2: SAMMENDRAG -->
+      <section id="kap2-sammendrag" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <div class="rounded-2xl bg-nordic-ink text-white p-6 sm:p-8">
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-teal-300 mb-2">Kort oppsummert</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-semibold mb-4">Sammendrag av Kapittel 2</h2>
+          <ul class="space-y-3 text-sm text-slate-200 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Demokratiets kjerne og tre pilarer:</strong> Skillet mellom direkte, indirekte (representativt) demokrati og skinndemokratier. Et ekte demokrati krever like rettigheter (stemmerett, ytrings- og foreningsfrihet), like muligheter (frie medier, vern mot korrupsjon og habilitetsbrudd) og vern av enkeltmennesker og minoriteter (rettssikkerhet, urfolket samene og fem nasjonale minoriteter).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Maktfordeling og parlamentarisme:</strong> Montesquieus prinsipp deler makten mellom Stortinget (lovgivende), regjeringen (utøvende) og domstolene (dømmende), med frie medier som «den fjerde statsmakt». Siden 1884 må regjeringen ha Stortingets tillit; Stortinget kan bruke mistillitsforslag, mens regjeringen kan stille kabinettsspørsmål (men Grunnloven åpner ikke for nyvalg).</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Regjeringen og Stortinget (2025–2029):</strong> Vi skiller mellom flertalls-/mindretallsregjering og ettparti-/koalisjonsregjering. Etter at Sp gikk ut i januar 2025 og etter valget i 2025, leder Jonas Gahr Støre (Ap) en ettparti-mindretallsregjering (53 mandater) som må forhandle i Stortinget. Stortingets 169 representanter arbeider i partigrupper og 12 fagkomiteer med lovgivende, bevilgende og kontrollerende makt.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Stortingsvalget og valgordningen:</strong> 19 valgdistrikter, forholdstallsvalg med 150 distriktsmandater og 19 utjevningsmandater, sperregrense på 4 % for styringsdyktige flertall, og arealfaktoren som sikrer distriktsrepresentasjon.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Tre styringsnivåer og lokalvalg:</strong> Staten, 15 fylkeskommuner (fra 2024, med fylkesting og Statsforvalteren) og 356 generalistkommuner (formannskapsmodell eller parlamentarisk modell). Lokalvalg holdes midtveis i stortingsperioden (2023–2027, neste valg september 2027 under ny valglov), der velgere kan gi personstemmer og slengere.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>USA – føderalisme og checks and balances:</strong> Makten er delt mellom delstater og føderale organer. Etter mellomvalget i november 2026 har Demokratene flertall i Kongressen (bl.a. 255 mot 167 seter i Representantenes hus) mens Donald Trump (R) er president, noe som gjør lovarbeidet mer krevende enn i Norge.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- KAP 2: OPPGAVER -->
+      <section id="kap2-oppgaver" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-6">
+          Oppgaver til Kapittel 2
+        </h2>
+        <div class="rounded-2xl bg-white border border-nordic-border p-6">
+          <ol class="list-decimal list-inside space-y-2.5 text-sm text-nordic-ink/90">
+            <li>Hva er forskjellen på direkte og representativt demokrati? Gi eksempler på begge.</li>
+            <li>Forklar hva <em>parlamentarisme</em> innebærer, og hvorfor Jonas Gahr Støres regjering i perioden 2025–2029 kalles en <em>mindretallsregjering</em>.</li>
+            <li>Hvilken funksjon har <em>utjevningsmandater</em> og sperregrensen i den norske valgordningen?</li>
+            <li>Se på mandatfordelingen for 2025–2029: Hvilke mulige flertallskonstellasjoner (minst 85 mandater) kan du sette sammen?</li>
+            <li>Forklar begrepene <em>føderalisme</em> og <em>checks and balances</em>. Hvordan viser situasjonen etter mellomvalget i USA i november 2026 at det er vanskeligere å få vedtatt politikk der enn i Norge?</li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Plassholder for neste kapittel -->
+      <section id="future-chapters-notice" class="rounded-2xl border border-dashed border-nordic-border bg-white/60 p-6 text-center">
+        <p class="text-xs font-semibold uppercase tracking-wider text-nordic-muted mb-1">Videre i Nils sin samfunnsbok</p>
+        <p class="text-sm font-medium text-nordic-ink">Kapittel 3: Du og samfunnet og påfølgende kapitler kobles på via venstremenyen etter hvert som de publiseres.</p>
+      </section>
+
+      <footer class="mt-12 pt-6 border-t border-nordic-border text-xs text-nordic-muted flex flex-col sm:flex-row items-center justify-between gap-2">
+        <span>Nils sin samfunnsbok — Kapittel 1 og 2</span>
+        <span>Bygget med Tailwind CSS</span>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 1. KONFIGURASJON FOR FREMTIDIGE KAPITLER
+    //    Utvid denne listen når Kapittel 2, 3 osv. er klare.
+    //    Sett `url` til filbanen (f.eks. "kapittel-2.html") og `ready: true`.
+    // =========================================================================
+    const FUTURE_CHAPTERS = [
+      { number: 3, title: 'Du og samfunnet', url: '#future-chapters-notice', ready: false },
+      { number: 4, title: 'Kultur i endring', url: '#future-chapters-notice', ready: false },
+      { number: 5, title: 'Skape verdier', url: '#future-chapters-notice', ready: false },
+      { number: 6, title: 'Ulikhet og utenforskap', url: '#future-chapters-notice', ready: false },
+      { number: 7, title: 'Globale utfordringer', url: '#future-chapters-notice', ready: false },
+    ];
+
+    function renderFutureChapters() {
+      const container = document.getElementById('future-chapters-nav');
+      if (!container) return;
+
+      container.innerHTML = FUTURE_CHAPTERS.map((ch) => {
+        const badgeClass = ch.ready
+          ? 'bg-nordic-accentSoft text-nordic-accentDark'
+          : 'bg-nordic-bg text-nordic-muted';
+        const linkClass = ch.ready
+          ? 'text-nordic-ink hover:bg-nordic-bg'
+          : 'text-nordic-muted/80 hover:text-nordic-ink hover:bg-nordic-bg/60';
+
+        return `
+          <li>
+            <a href="${ch.url}"
+               class="flex items-center justify-between px-2.5 py-2 rounded-lg text-[13px] transition ${linkClass}"
+               ${ch.ready ? '' : 'title="Kommer snart"'}>
+              <span class="flex items-center gap-2.5 truncate">
+                <span class="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-md text-xs font-semibold ${badgeClass}">
+                  ${ch.number}
+                </span>
+                <span class="truncate">${ch.title}</span>
+              </span>
+              ${ch.ready
+                ? '<svg class="h-3.5 w-3.5 text-nordic-muted shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>'
+                : '<span class="text-[10px] font-medium px-1.5 py-0.5 rounded bg-nordic-bg text-nordic-muted shrink-0">Snart</span>'
+              }
+            </a>
+          </li>
+        `;
+      }).join('');
+    }
+
+    // =========================================================================
+    // 2. SCROLL-SPY MED INTERSECTION OBSERVER
+    // =========================================================================
+    function initScrollSpy() {
+      const spyTargets = Array.from(document.querySelectorAll('[data-spy]'));
+      const spyLinks = Array.from(document.querySelectorAll('[data-spy-link]'));
+      if (!spyTargets.length || !spyLinks.length) return;
+
+      const setActiveLink = (id) => {
+        spyLinks.forEach((link) => {
+          const isActive = link.getAttribute('data-spy-link') === id;
+          link.classList.toggle('bg-nordic-accentSoft', isActive);
+          link.classList.toggle('text-nordic-accentDark', isActive);
+          link.classList.toggle('font-semibold', isActive);
+          if (isActive) {
+            link.setAttribute('aria-current', 'location');
+          } else {
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+
+      const visibleSections = new Map();
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              visibleSections.set(entry.target.id, entry.boundingClientRect.top);
+            } else {
+              visibleSections.delete(entry.target.id);
+            }
+          });
+
+          if (visibleSections.size > 0) {
+            // Velg den synlige seksjonen som ligger nærmest toppen av skjermen
+            const topMost = Array.from(visibleSections.entries()).sort((a, b) => Math.abs(a[1]) - Math.abs(b[1]))[0];
+            if (topMost) setActiveLink(topMost[0]);
+          }
+        },
+        {
+          rootMargin: '-12% 0px -65% 0px',
+          threshold: [0, 0.1, 0.5]
+        }
+      );
+
+      spyTargets.forEach((el) => observer.observe(el));
+      setActiveLink(spyTargets[0].id);
+    }
+
+    // =========================================================================
+    // 3. LESEFREMDRIFT + MOBILMENY + TREKKSPILL FOR KAPITTEL 1
+    // =========================================================================
+    function initReadingProgress() {
+      const bar = document.getElementById('reading-progress-bar');
+      const label = document.getElementById('reading-progress-text');
+      if (!bar || !label) return;
+
+      const update = () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const pct = docHeight > 0 ? Math.min(100, Math.max(0, Math.round((scrollTop / docHeight) * 100))) : 0;
+        bar.style.width = `${pct}%`;
+        label.textContent = `${pct} %`;
+      };
+
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    }
+
+    function initNavigationControls() {
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('mobile-backdrop');
+      const openBtn = document.getElementById('mobile-menu-btn');
+      const closeBtn = document.getElementById('mobile-close-btn');
+
+      const openMenu = () => {
+        sidebar.classList.remove('-translate-x-full');
+        backdrop.classList.remove('hidden');
+        openBtn?.setAttribute('aria-expanded', 'true');
+      };
+
+      const closeMenu = () => {
+        sidebar.classList.add('-translate-x-full');
+        backdrop.classList.add('hidden');
+        openBtn?.setAttribute('aria-expanded', 'false');
+      };
+
+      openBtn?.addEventListener('click', openMenu);
+      closeBtn?.addEventListener('click', closeMenu);
+      backdrop?.addEventListener('click', closeMenu);
+
+      // Lukk mobilmeny når bruker klikker på en lenke
+      sidebar?.querySelectorAll('a').forEach((a) => {
+        a.addEventListener('click', () => {
+          if (window.innerWidth < 1024) closeMenu();
+        });
+      });
+
+      // Trekke sammen / utvide kapittel 1-lenker
+      document.querySelectorAll('.chapter-toggle').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const targetId = btn.getAttribute('data-target');
+          const list = document.getElementById(targetId);
+          const chevron = btn.querySelector('.chevron');
+          if (!list) return;
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', String(!expanded));
+          list.classList.toggle('hidden', expanded);
+          chevron?.classList.toggle('rotate-90', !expanded);
+        });
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderFutureChapters();
+      initScrollSpy();
+      initReadingProgress();
+      initNavigationControls();
+    });
+  </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    
+    // Ordliste basert på lærebokens definisjoner
+    const ordliste = {
+        "makt": "Evnen til å få gjennomslag for sin vilje, også der en møter motstand.",
+        "goder": "Alt vi ønsker oss og setter pris på (f.eks. god skole, ren luft).",
+        "byrder": "Alt vi gjerne skulle sluppet (f.eks. høye skatter, lang ventetid).",
+        "konfliktlinjer": "Mønstre i hvordan partiene stiller seg i ulike konfliktsaker.",
+        "markedsøkonomi": "En økonomi der prisen styres av konkurransen mellom private produsenter.",
+        "velferdsstat": "En stat som tar ansvar for at innbyggerne får hjelp og støtte i mange faser av livet.",
+        "blandingsøkonomi": "Et system med både privateide bedrifter og offentlig finansierte goder.",
+        "ideologi": "Et sett av oppfatninger om hvordan samfunnet fungerer og hva som er rett og galt.",
+        "konkurranseutsetting": "Når offentlige oppgaver legges ut på anbud for private bedrifter.",
+        "subsidiert": "At det offentlige betaler en del av kostnaden ved en vare eller tjeneste.",
+        "bærekraftig utvikling": "Utvikling som dekker dagens behov uten å redusere framtidige generasjoners muligheter.",
+        "parlamentarisme": "Et styringssystem der regjeringen må ha tillit (eller ikke ha flertall mot seg) i Stortinget for å bli sittende.",
+        "mindretallsregjering": "En regjering der regjeringspartiet eller -partiene har færre enn halvparten av representantene i parlamentet.",
+        "maktfordelingsprinsippet": "Prinsippet om at statsmakten deles mellom lovgivende, utøvende og dømmende makt.",
+        "utjevningsmandater": "19 stortingsmandater som fordeles for å gjøre den nasjonale partifordelingen mest mulig rettferdig for partier over 4 %.",
+        "føderalisme": "En statsform der makten er fordelt mellom sentrale føderale myndigheter og selvstendige delstater.",
+        "checks and balances": "System for gjensidig kontroll og maktbalanse mellom presidenten, Kongressen og domstolene i USA.",
+        "skinndemokrati": "Et land som prøver å framstå som demokratisk ved å holde valg, men der valgfusk, manglende rettigheter eller andre makthavere hindrer ekte folkestyre.",
+        "korrupsjon": "Ulovlig bruk av penger, gaver eller tjenester for å kjøpe politisk makt eller avgjørelser.",
+        "habilitetsbrudd": "Når en politiker tar avgjørelser i en sak der hen selv, nære venner eller familie har personlige interesser, uten å melde seg inhabil.",
+        "rettssikkerhet": "Prinsippet om at alle er like for loven, ingen kan straffes uten dom i en nøytral domstol, og myndighetene må følge loven.",
+        "urfolk": "Folkegrupper som skiller seg fra majoriteten og som har levd i et område før staten og landegrensene ble etablert (i Norge: samene).",
+        "generalistkommuner": "Prinsippet om at alle norske kommuner skal tilby de samme tjenestene med samme kvalitet, uavhengig av størrelse og innbyggertall.",
+        "øremerkede tilskudd": "Statlige penger til kommunene som bare kan brukes til bestemte formål fastsatt av staten.",
+        "formannskapsmodellen": "Styringsmodell i de fleste norske kommuner der et forholdsmessig valgt formannskap og en ansatt kommunedirektør (rådmann) deler ansvar for politikk og administrasjon.",
+        "fylkestinget": "Det øverste folkevalgte organet i en fylkeskommune, valgt ved fylkestingsvalg hvert fjerde år.",
+        "statsforvalter": "Statens representant i fylket som kontrollerer at kommuner og fylkeskommuner følger statlige lover og regler.",
+        "slengere": "Kandidater fra andre partilister som en velger fører opp på sin stemmeseddel i kommunestyrevalg for å påvirke personvalget.",
+        "rammelover": "Lover vedtatt av Stortinget som trekker opp hovedrammene, mens regjeringen får fullmakt til å utforme detaljerte forskrifter.",
+        "riksrevisjonen": "Stortingets eksterne kontrollorgan som undersøker om statens penger brukes i tråd med Stortingets vedtak.",
+        "sperregrensen": "Kravet om minst 4 % oppslutning på landsbasis for at et parti skal få ta del i fordelingen av de 19 utjevningsmandatene.",
+        "arealfaktoren": "Regelen i norsk valgordning som gir store, tynt befolkede valgdistrikter flere stortingsmandater enn folketallet alene skulle tilsi.",
+        "statsråder": "Medlemmene av regjeringen (ministrene), som hver leder sitt eget fagdepartement.",
+        "koalisjonsregjering": "En regjering der to eller flere politiske partier samarbeider basert på en felles samarbeidserklæring.",
+        "riksrett": "En særskilt domstol som kan dømme stortingsrepresentanter, regjeringsmedlemmer og høyesterettsdommere for lovbrudd begått i embetet.",
+        "den fjerde statsmakt": "Betegnelse på frie og uavhengige medier fordi de gransker makthavere og avslører maktmisbruk i samfunnet.",
+        "mistillitsforslag": "Forslag i Stortinget om at regjeringen ikke lenger har tillit. Får forslaget flertall, må regjeringen gå av.",
+        "kabinettsspørsmål": "Når regjeringen stiller et ultimatum til Stortinget og truer med å gå av dersom den ikke får flertall i en bestemt sak."
+    };
+
+    const innhold = document.getElementById('main-content');
+    if(!innhold) return;
+
+    function wrapTerms(node) {
+        if (node.nodeType === 3) { 
+            let text = node.nodeValue;
+            let modified = false;
+            
+            Object.keys(ordliste).forEach(term => {
+                // Matcher eksakte ord uavhengig av store/små bokstaver
+                const regex = new RegExp(`\\b(${term})\\b`, 'gi');
+                if (regex.test(text)) {
+                    modified = true;
+                    const tooltipHTML = `<span class="group relative inline-block cursor-help border-b-2 border-dotted border-blue-600 text-blue-800 font-semibold transition-colors hover:bg-blue-50">$1<span class="invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-slate-900 text-slate-50 text-sm rounded-lg p-3 absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 z-50 pointer-events-none shadow-xl text-left font-normal leading-relaxed before:content-[''] before:absolute before:top-full before:left-1/2 before:-translate-x-1/2 before:border-4 before:border-transparent before:border-t-slate-900"><strong class="block mb-1 text-blue-300 capitalize">$1</strong>${ordliste[term]}</span></span>`;
+                    text = text.replace(regex, tooltipHTML);
+                }
+            });
+
+            if (modified) {
+                const span = document.createElement('span');
+                span.innerHTML = text;
+                node.parentNode.replaceChild(span, node);
+            }
+        } else if (node.nodeType === 1 && !['SCRIPT', 'STYLE', 'A', 'H1', 'H2'].includes(node.nodeName)) {
+            // Unngår å bytte ut tekst inni lenker og overskrifter
+            Array.from(node.childNodes).forEach(wrapTerms);
+        }
+    }
+    
+    wrapTerms(innhold);
+});
+</script>
+
+  <!-- Flytende Til toppen-knapp -->
+  <button
+    id="back-to-top"
+    type="button"
+    aria-label="Til toppen"
+    class="fixed bottom-5 right-5 z-40 hidden items-center gap-1.5 rounded-full bg-nordic-accent text-white dark:text-slate-950 px-3.5 py-2 text-xs font-semibold shadow-lg hover:bg-nordic-accentDark transition-all"
+  >
+    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+    </svg>
+    Til toppen
+  </button>
+
+  <script>
+    // Mørk modus-veksler + kort-animasjon + Til toppen
+    document.addEventListener('DOMContentLoaded', () => {
+      const root = document.documentElement;
+      const toggles = document.querySelectorAll('[data-theme-toggle]');
+
+      const syncThemeIcons = () => {
+        const isDark = root.classList.contains('dark');
+        document.querySelectorAll('.theme-icon-sun').forEach((el) => el.classList.toggle('hidden', !isDark));
+        document.querySelectorAll('.theme-icon-moon').forEach((el) => el.classList.toggle('hidden', isDark));
+      };
+
+      syncThemeIcons();
+
+      toggles.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const isDark = root.classList.toggle('dark');
+          localStorage.setItem('delta-theme', isDark ? 'dark' : 'light');
+          syncThemeIcons();
+        });
+      });
+
+      // Legg til subtil sveveeffekt på innholdskort
+      document.querySelectorAll('main article, main .grid > div.rounded-xl').forEach((card) => {
+        card.classList.add('card-lift');
+      });
+
+      // Til toppen-knapp
+      const topBtn = document.getElementById('back-to-top');
+      if (topBtn) {
+        window.addEventListener('scroll', () => {
+          const show = window.scrollY > 500;
+          topBtn.classList.toggle('hidden', !show);
+          topBtn.classList.toggle('inline-flex', show);
+        }, { passive: true });
+        topBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+
+      // Last ned kapittel som PDF (via nettleserens Lagre som PDF)
+      const originalTitle = document.title;
+      document.querySelectorAll('[data-pdf-chapter]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const chapter = btn.getAttribute('data-pdf-chapter');
+          const pdfTitle = btn.getAttribute('data-pdf-title') || originalTitle;
+          document.body.setAttribute('data-print-only', chapter);
+          document.title = pdfTitle;
+          window.print();
+        });
+      });
+      window.addEventListener('afterprint', () => {
+        document.body.removeAttribute('data-print-only');
+        document.title = originalTitle;
+      });
+    });
+  </script>
+</body>
+</html>
