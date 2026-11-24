@@ -1046,14 +1046,86 @@
               I debatter om for eksempel menneskeskapte klimaendringer kan man møte motstridende påstander. Du har rett til dine egne meninger, men ikke til dine egne fakta. Still alltid disse fire kontrollspørsmålene:
             </p>
             <figure class="my-5">
-              <img
-                src="images/klimastriper.png"
-                alt="Klimastriper som viser temperaturutviklingen i Norge over tid"
-                class="w-full h-auto max-h-[260px] object-cover rounded-2xl shadow-md border border-nordic-border"
-                loading="lazy"
-              />
+              <svg viewBox="0 0 800 300" class="w-full h-auto rounded-2xl border border-nordic-border" role="img" aria-label="Illustrasjon av de fire kildekritiske stegene: relevans, primær- og sekundærkilde, formål/tendens og samsvar">
+                <defs>
+                  <marker id="arrow-kilde" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                    <path d="M 0 1 L 10 5 L 0 9 z" fill="var(--nordic-accent)" />
+                  </marker>
+                </defs>
+
+                <!-- Bakgrunn -->
+                <rect x="0" y="0" width="800" height="300" rx="16" fill="var(--nordic-bg)" />
+
+                <!-- Tittel -->
+                <text x="28" y="34" font-family="Inter, sans-serif" font-size="11" font-weight="700" fill="var(--nordic-accent)">KILDEKRITIKK I PRAKSIS (VG2)</text>
+                <text x="28" y="54" font-family="Inter, sans-serif" font-size="15" font-weight="700" fill="var(--nordic-ink)">Fra påstand i feeden til pålitelig kunnskap</text>
+
+                <!-- Steg 1: Påstand / Relevans -->
+                <rect x="28" y="78" width="166" height="175" rx="12" fill="var(--nordic-surface)" stroke="var(--nordic-border)" stroke-width="1.5" />
+                <circle cx="50" cy="102" r="12" fill="var(--nordic-accent-soft)" />
+                <text x="50" y="106" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="var(--nordic-accent-dark)">1</text>
+                <text x="70" y="106" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="var(--nordic-ink)">Relevans</text>
+                <text x="40" y="132" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">Svarer kilden faktisk</text>
+                <text x="40" y="147" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">på det du lurer på?</text>
+                <rect x="40" y="168" width="142" height="68" rx="8" fill="var(--nordic-bg)" />
+                <text x="48" y="186" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="var(--nordic-ink)">Eksempel:</text>
+                <text x="48" y="201" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-muted)">En TikTok-video om</text>
+                <text x="48" y="215" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-muted)">kaldt vær i Norge sier lite</text>
+                <text x="48" y="229" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-muted)">om globalt klima.</text>
+
+                <!-- Pil 1->2 -->
+                <line x1="196" y1="165" x2="216" y2="165" stroke="var(--nordic-accent)" stroke-width="2" marker-end="url(#arrow-kilde)" />
+
+                <!-- Steg 2: Opphav (Primær vs Sekundær) -->
+                <rect x="220" y="78" width="166" height="175" rx="12" fill="var(--nordic-surface)" stroke="var(--nordic-border)" stroke-width="1.5" />
+                <circle cx="242" cy="102" r="12" fill="var(--nordic-accent-soft)" />
+                <text x="242" y="106" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="var(--nordic-accent-dark)">2</text>
+                <text x="262" y="106" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="var(--nordic-ink)">Opphav</text>
+                <text x="232" y="132" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">Hvem står bak? Gå fra</text>
+                <text x="232" y="147" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">sekundær- til primærkilde.</text>
+                <rect x="232" y="168" width="142" height="68" rx="8" fill="var(--nordic-bg)" />
+                <text x="240" y="186" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="var(--nordic-ink)">Spor kjeden:</text>
+                <text x="240" y="201" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-muted)">Innlegg / avis (sekundær)</text>
+                <text x="240" y="215" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-accent)">↓</text>
+                <text x="240" y="229" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="var(--nordic-ink)">Forskning / SSB (primær)</text>
+
+                <!-- Pil 2->3 -->
+                <line x1="388" y1="165" x2="408" y2="165" stroke="var(--nordic-accent)" stroke-width="2" marker-end="url(#arrow-kilde)" />
+
+                <!-- Steg 3: Formål og tendens -->
+                <rect x="412" y="78" width="166" height="175" rx="12" fill="var(--nordic-surface)" stroke="var(--nordic-border)" stroke-width="1.5" />
+                <circle cx="434" cy="102" r="12" fill="var(--nordic-accent-soft)" />
+                <text x="434" y="106" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="var(--nordic-accent-dark)">3</text>
+                <text x="454" y="106" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="var(--nordic-ink)">Formål</text>
+                <text x="424" y="132" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">Vil kilden informere</text>
+                <text x="424" y="147" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">objektivt eller påvirke?</text>
+                <rect x="424" y="168" width="142" height="68" rx="8" fill="var(--nordic-bg)" />
+                <text x="432" y="186" font-family="Inter, sans-serif" font-size="10" font-weight="600" fill="var(--nordic-ink)">Se etter tendens:</text>
+                <text x="432" y="201" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-muted)">• Ensidige tall?</text>
+                <text x="432" y="215" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-muted)">• Sterke følelsesord?</text>
+                <text x="432" y="229" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-muted)">• Skjulte interesser?</text>
+
+                <!-- Pil 3->4 -->
+                <line x1="580" y1="165" x2="600" y2="165" stroke="var(--nordic-accent)" stroke-width="2" marker-end="url(#arrow-kilde)" />
+
+                <!-- Steg 4: Samsvar -->
+                <rect x="604" y="78" width="168" height="175" rx="12" fill="var(--nordic-surface)" stroke="var(--nordic-accent)" stroke-width="1.8" />
+                <circle cx="626" cy="102" r="12" fill="var(--nordic-accent)" />
+                <text x="626" y="106" text-anchor="middle" font-family="Inter, sans-serif" font-size="12" font-weight="700" fill="var(--nordic-bg)">4</text>
+                <text x="646" y="106" font-family="Inter, sans-serif" font-size="13" font-weight="700" fill="var(--nordic-ink)">Samsvar</text>
+                <text x="616" y="132" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">Stemmer dette med</text>
+                <text x="616" y="147" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">andre troverdige kilder?</text>
+                <rect x="616" y="168" width="144" height="68" rx="8" fill="var(--nordic-accent-soft)" />
+                <text x="624" y="186" font-family="Inter, sans-serif" font-size="10" font-weight="700" fill="var(--nordic-accent-dark)">Konklusjon:</text>
+                <text x="624" y="201" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-ink)">Sjekk mot uavhengig</text>
+                <text x="624" y="215" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-ink)">forskning (f.eks. FNs</text>
+                <text x="624" y="229" font-family="Inter, sans-serif" font-size="10" fill="var(--nordic-ink)">klimapanel eller SSB).</text>
+
+                <!-- Bunntekst i SVG -->
+                <text x="28" y="280" font-family="Inter, sans-serif" font-size="11" fill="var(--nordic-muted)">Tips: Du har rett til dine egne meninger – men ikke til dine egne fakta.</text>
+              </svg>
               <figcaption class="mt-2 text-xs text-nordic-muted">
-                Klimastripene viser utviklingen i årlig gjennomsnittstemperatur i Norge fra blått (kaldere) til rødt (varmere). Grafikk: Professor Ed Hawkins (CC BY 4.0, Wikimedia Commons).
+                De fire stegene i kildekritikk hjelper deg å skille mellom troverdige primærkilder og tendensiøse påstander.
               </figcaption>
             </figure>
             <ol class="space-y-2.5 text-sm text-nordic-ink">
