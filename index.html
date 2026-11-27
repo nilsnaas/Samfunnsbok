@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nils sin samfunnsbok — Kapittel 1 og 2</title>
+  <title>Nils sin samfunnsbok — Kapittel 1, 2 og 4</title>
   <script>
     (function () {
       const saved = localStorage.getItem('delta-theme');
@@ -249,13 +249,18 @@
       .rounded-2xl {
         break-inside: avoid;
       }
-      body[data-print-only="kap1"] section[id^="kap2-"] {
+      body[data-print-only="kap1"] section[id^="kap2-"],
+      body[data-print-only="kap1"] section[id^="kap4-"] {
         display: none !important;
       }
       body[data-print-only="kap2"] section:not([id^="kap2-"]) {
         display: none !important;
       }
-      body[data-print-only="kap2"] #kap2-intro {
+      body[data-print-only="kap4"] section:not([id^="kap4-"]) {
+        display: none !important;
+      }
+      body[data-print-only="kap2"] #kap2-intro,
+      body[data-print-only="kap4"] #kap4-intro {
         border-top: none !important;
         padding-top: 0 !important;
       }
@@ -527,6 +532,62 @@
           </ul>
         </div>
 
+        <!-- KAPITTEL 4 (Aktivt kapittel med scroll-spy) -->
+        <div class="chapter-group rounded-xl border border-nordic-border/80 bg-nordic-bg/40 p-2">
+          <button
+            type="button"
+            class="chapter-toggle w-full flex items-center justify-between px-2.5 py-2 rounded-lg text-left font-semibold text-nordic-ink hover:bg-white transition"
+            aria-expanded="true"
+            data-target="chapter-4-links"
+          >
+            <span class="flex items-center gap-2">
+              <span class="inline-flex h-5 w-5 items-center justify-center rounded-md bg-nordic-accent text-white text-xs font-bold">4</span>
+              <span class="text-[13px] leading-snug">Kultur og mangfold</span>
+            </span>
+            <svg class="chevron h-4 w-4 text-nordic-muted transition-transform rotate-90" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+
+          <ul id="chapter-4-links" class="mt-1.5 space-y-0.5 pl-2 border-l border-nordic-border ml-4">
+            <li>
+              <a href="#kap4-intro" data-spy-link="kap4-intro" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Innledning og kompetansemål
+              </a>
+            </li>
+            <li>
+              <a href="#kap4-kultur" data-spy-link="kap4-kultur" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Kultur, verdier og bygd/by
+              </a>
+            </li>
+            <li>
+              <a href="#kap4-mangfold" data-spy-link="kap4-mangfold" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Majoritet, minoritet og urfolk
+              </a>
+            </li>
+            <li>
+              <a href="#kap4-innvandring" data-spy-link="kap4-innvandring" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Innvandring (Skien og Telemark)
+              </a>
+            </li>
+            <li>
+              <a href="#kap4-rasisme" data-spy-link="kap4-rasisme" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Rasisme, fordommer og ytringsfrihet
+              </a>
+            </li>
+            <li>
+              <a href="#kap4-sammendrag" data-spy-link="kap4-sammendrag" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Sammendrag
+              </a>
+            </li>
+            <li>
+              <a href="#kap4-oppgaver" data-spy-link="kap4-oppgaver" class="spy-link block px-2.5 py-1.5 rounded-md text-[13px] font-medium text-nordic-muted hover:text-nordic-ink hover:bg-white transition">
+                Oppgaver
+              </a>
+            </li>
+          </ul>
+        </div>
+
         <!--
           UTVIDELSESOMRÅDE FOR KOMMENDE KAPITLER
           Når kapittel 2, 3 osv. opprettes (f.eks. kapittel-2.html eller seksjoner),
@@ -559,9 +620,9 @@
           </svg>
           Forrige kapittel
         </span>
-        <span class="font-medium text-nordic-ink">Kapittel 1–2 av 7</span>
-        <a href="#kap2-intro" class="inline-flex items-center gap-1.5 text-nordic-accent hover:text-nordic-accentDark font-medium transition">
-          Hopp til Kapittel 2: Demokrati!
+        <span class="font-medium text-nordic-ink">Kapittel 1, 2 og 4</span>
+        <a href="#kap4-intro" class="inline-flex items-center gap-1.5 text-nordic-accent hover:text-nordic-accentDark font-medium transition">
+          Hopp til Kapittel 4: Kultur og mangfold
           <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
           </svg>
@@ -2495,6 +2556,387 @@
         </div>
       </section>
 
+      <!-- =================================================================== -->
+      <!-- KAPITTEL 4: KULTUR I ENDRING OG KULTURELT MANGFOLD                  -->
+      <!-- =================================================================== -->
+      <section id="kap4-intro" data-spy class="mb-16 pt-10 border-t-2 border-nordic-border">
+        <div class="nordic-hero-bg rounded-3xl bg-white border border-nordic-border p-6 sm:p-9 shadow-2xs mb-8">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div class="inline-flex items-center gap-2 rounded-full bg-nordic-accentSoft px-3 py-1 text-xs font-semibold text-nordic-accentDark">
+              <span>Kapittel 4</span>
+              <span aria-hidden="true">•</span>
+              <span>Samfunnsfag (Delta! + Samfunn 2025)</span>
+            </div>
+            <div class="flex items-center gap-2 text-[11px] font-medium text-nordic-muted">
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">Kultur &amp; Sápmi</span>
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">SSB 2026</span>
+              <span class="rounded-full border border-nordic-border px-2.5 py-0.5">Skien &amp; Telemark</span>
+            </div>
+          </div>
+
+          <h1 class="font-serif text-4xl sm:text-5xl font-semibold tracking-tight text-nordic-ink mb-4">
+            Kultur i endring og kulturelt mangfold
+          </h1>
+
+          <p class="text-base sm:text-lg text-nordic-muted leading-relaxed mb-5">
+            Hva er egentlig «typisk norsk»? Brunost, 17. mai og fjellturer – eller likestilling, uformell klesstil og taco på fredager? Kulturer står aldri stille. Gjennom reiser, teknologi, globalisering og innvandring møtes ulike levemåter, noe som skaper både nye fellesskap, spenninger og debatter om identitet, minoriteter og ytringsfrihet.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-3">
+            <button
+              type="button"
+              data-pdf-btn
+              data-pdf-chapter="kap4"
+              data-pdf-title="Nils-sin-samfunnsbok-Kapittel-4"
+              class="inline-flex items-center gap-2 rounded-xl bg-nordic-accent text-white dark:text-slate-950 px-4 py-2 text-xs font-semibold shadow-xs hover:bg-nordic-accentDark transition"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Last ned Kapittel 4 som PDF
+            </button>
+          </div>
+        </div>
+
+        <!-- Kompetansemål -->
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 sm:p-7 shadow-2xs">
+          <h2 class="text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-3">
+            Kompetansemål i kapittelet
+          </h2>
+          <ul class="space-y-2.5 text-sm text-nordic-ink">
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+              <span>Reflektere over likheter og ulikheter i identitet, levesett og kulturuttrykk innenfor og mellom majoriteter og minoriteter i Norge og Sápmi/Sábme/Sáepmie.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-nordic-accent shrink-0"></span>
+              <span>Vurdere årsaker til og tiltak som kan forebygge rasisme, diskriminering og hatefulle ytringer, og drøfte grensene for ytringsfriheten.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- KAP 4 DELEMNE 1: KULTUR, VERDIER OG BYGD/BY -->
+      <section id="kap4-kultur" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Hva er kultur? Variasjon, verdier og bygd mot by
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+          Ordet <strong>kultur</strong> dekker alt mennesker har skapt eller forandret – i motsetning til urørt natur. I samfunnsfag handler kultur særlig om normer, verdier, språk, tradisjoner og levemåter som overføres fra generasjon til generasjon gjennom <strong>sosialisering</strong>. Innenfor norsk kultur finnes også mange <strong>subkulturer</strong> (som gamere, skatere, rånere eller graffitikunstnere) med egne kleskoder, uttrykk og normer.
+        </p>
+
+        <figure class="my-5">
+          <img
+            src="images/telemark-17mai.jpg"
+            alt="17. mai-feiring og bunader i Brevik i Telemark"
+            class="w-full h-auto max-h-[380px] object-cover rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            17. mai-feiring med bunader i Brevik i Telemark – markering av høytider er et viktig kulturuttrykk som skaper fellesskap. Foto: Fotografen Heistad (CC BY-SA 4.0, Wikimedia Commons).
+          </figcaption>
+        </figure>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Verdier i endring</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Sekularisering, likestilling og uformell stil</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Selv om kristendommen har preget Norge i tusen år, har samfunnet blitt stadig mer <em>sekulært</em> (andelen medlemmer i Den norske kirke har sunket fra 94 % i 1970 til under 65 % i dag). Samtidig kjennetegnes norsk kultur av sterk oppslutning om demokrati, kjønnslikestilling, skeives rettigheter, små økonomiske forskjeller og en uformell tone på jobb og skole.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1.5">Kulturuttrykk og mat</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Ritualer, høytider og matkultur</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Fellesskap bygges gjennom <em>ritualer</em> og <em>overgangsritualer</em> – fra dåp, konfirmasjon og russetid til id al-fitr og jom kippur. Også matkultur endrer seg raskt: tradisjonskost som spekemat og poteter (som først kom fra Peru på 1700-tallet!) blandes med taco, sushi og halal/kosher. Samtidig kastes over 450 000 tonn mat i Norge årlig, noe som har økt bevisstheten om etikk og bærekraftig mat.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <h3 class="font-semibold text-nordic-ink mb-1">Individualistisk vs. kollektivistisk kultur</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Norsk majoritetskultur er overveiende <strong>individualistisk</strong>: enkeltpersoners frihet og egne valg i utdanning, yrke og partner står i sentrum, og eldreomsorg løses ofte gjennom sykehjem. Mange minoritetskulturer er mer <strong>kollektivistiske</strong>, der hensynet til familie, fellesskap og gjensidige forpliktelser på tvers av generasjoner veier tyngre.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <h3 class="font-semibold text-nordic-ink mb-1">Bygd og by i Norge (Ungdata)</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Digitalisering gjør at ungdom i hele landet deler mye av den samme kulturen. Likevel viser nyere Ungdata-analyser (2024) at jenter på bygda rapporterer noe mer kroppspress og konformitetspress i tette lokalsamfunn der «alle kjenner alle», samtidig som mange unge i distriktene føler sterk lokal tilhørighet.
+            </p>
+          </div>
+        </div>
+
+        <!-- Lokalt eksempel: Herøya / Grenland -->
+        <div class="rounded-2xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-5 text-sm mb-6">
+          <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accentDark mb-1">Lokalt eksempel • Grenland (Telemark)</span>
+          <h3 class="font-semibold text-nordic-ink mb-2">Industrikultur på Herøya i Grenland</h3>
+          <figure class="my-3">
+            <img
+              src="images/heroya-yara.jpg"
+              alt="Yaras fabrikker på Herøya i Porsgrunn"
+              class="w-full h-auto max-h-[340px] object-cover rounded-xl shadow-md border border-nordic-border"
+              loading="lazy"
+            />
+            <figcaption class="mt-1.5 text-[11px] text-nordic-muted">
+              Yaras anlegg på Herøya i Porsgrunn er Norges største industriområde og preger arbeidskultur og lokalsamfunn i hele Grenland. Foto: Bitjungle (CC BY-SA 4.0, Wikimedia Commons).
+            </figcaption>
+          </figure>
+          <p class="text-nordic-ink/90 leading-relaxed">
+            Mange norske tettsteder og byområder er formet rundt industri. I Grenland har <strong>Herøya Industripark</strong> (med Yara og over 80 bedrifter) i over hundre år skapt stolte fagtradisjoner og yrkesfaglige miljøer – noe som fortsatt påvirker utdanningsvalg og lokal identitet blant ungdom i Skien og Porsgrunn.
+          </p>
+        </div>
+
+        <!-- Supersammendrag Kap 4 Delemne 1 -->
+        <aside aria-label="Supersammendrag" class="mt-8 rounded-2xl border-l-4 border-nordic-accent bg-nordic-accentSoft/45 border-y border-r border-nordic-border p-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-nordic-accentDark">Supersammendrag • Kap. 4, Delemne 1</span>
+            <span class="text-[11px] font-medium text-nordic-muted">Kompetansemål: Identitet, levesett og kulturuttrykk</span>
+          </div>
+          <ul class="space-y-1.5 text-xs sm:text-sm text-nordic-ink/90 list-disc list-inside">
+            <li><strong>Kultur og sosialisering:</strong> Kultur er normer, verdier og uttrykk som endrer seg over tid og læres gjennom <em>sosialisering</em>; innenfor storsamfunnet finnes ulike <em>subkulturer</em>.</li>
+            <li><strong>Norske kjennetegn og verdimangfold:</strong> Sekularisering, likestilling, uformell stil og balansen mellom <em>individualistisk</em> og <em>kollektivistisk</em> kultur.</li>
+            <li><strong>Lokale forskjeller:</strong> Steder preges av næringsliv og historie – fra tette bygdemiljøer til industrisamfunn som Grenland og Herøya.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- KAP 4 DELEMNE 2: MAJORITET, MINORITETER OG URFOLK -->
+      <section id="kap4-mangfold" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Majoritet, minoriteter, urfolk og fornorsking
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          I ethvert samfunn finnes en <strong>majoritet</strong> (flertallet) og ulike <strong>minoriteter</strong> (mindretall, basert på for eksempel språk, religion eller etnisitet). En person kan tilhøre majoriteten i én sammenheng og en minoritet i en annen – i Kautokeino er for eksempel samisk kultur i flertall lokalt, selv om samene er en minoritet nasjonalt.
+        </p>
+
+        <figure class="my-5">
+          <img
+            src="images/sametinget.jpg"
+            alt="Sametinget i Karasjok"
+            class="w-full h-auto max-h-[360px] object-cover rounded-2xl shadow-md border border-nordic-border"
+            loading="lazy"
+          />
+          <figcaption class="mt-2 text-xs text-nordic-muted">
+            Sametinget i Karasjok – antall registrerte i samemanntallet har økt kraftig de siste tiårene og viser økt stolthet over samisk identitet. Foto: Helge Høifødt (CC BY-SA 3.0, Wikimedia Commons).
+          </figcaption>
+        </figure>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Urfolk i Sápmi</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Samene</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Samene er Nordens <strong>urfolk</strong> – de har bodd i Sápmi lenge før dagens statsgrenser ble trukket. I Norge snakkes nordsamisk, sørsamisk og lulesamisk. Gjennom ILO-konvensjon nr. 169 og Sametinget har samene rett til å bevare og videreutvikle språk og kultur, og antall registrerte i samemanntallet har vokst kraftig (over 23 000 ved nyere valg).
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <span class="inline-block text-xs font-semibold uppercase tracking-wider text-nordic-accent mb-1">Langvarig tilknytning</span>
+            <h3 class="font-semibold text-nordic-ink mb-1">Norges fem nasjonale minoriteter</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Fem grupper har status som nasjonale minoriteter i Norge: <strong>kvener/norskfinner</strong>, <strong>skogfinner</strong>, <strong>jøder</strong>, <strong>romer</strong> og <strong>romanifolk/tatere</strong>. Alle har lang historie i Norge – fra skogfinnenes svedjebruk på 1600-tallet og kvenenes bosetting i nord, til jødisk kulturliv etter at «jødeparagrafen» ble opphevet i 1851.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white border border-nordic-border p-6 mb-6">
+          <h3 class="text-lg font-semibold text-nordic-ink mb-2">Fra fornorsking (assimilering) til integrering</h3>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed mb-4">
+            Fra midten av 1800-tallet til rundt 1960 førte den norske staten en hard <strong>fornorskingspolitikk</strong>. Målet var <strong>assimilering</strong>: å gjøre samer og nasjonale minoriteter mest mulig like majoriteten ved å forby morsmål på internatskoler og nedvurdere minoritetskulturer. Sannhets- og forsoningskommisjonens rapport (2023) og Stortingets oppfølging har dokumentert hvordan denne uretten fortsatt preger språk og identitet i dag.
+          </p>
+          <p class="text-sm text-nordic-ink/90 leading-relaxed">
+            Dagens mål er derimot <strong>integrering</strong>: at minoriteter får kunnskap og mulighet til å delta i samfunnet på like vilkår, <em>uten</em> å måtte gi opp sin egen kultur og identitet.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-3 gap-4 text-sm">
+          <div class="rounded-xl bg-white border border-nordic-border p-4">
+            <h4 class="font-semibold text-nordic-ink mb-1">Etnosentrisme</h4>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Å bruke sin egen kultur som «fasit» og måle andre kulturer mot den. Kan skape «oss mot dem»-holdninger og fordommer.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-4">
+            <h4 class="font-semibold text-nordic-ink mb-1">Kulturrelativisme</h4>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Å prøve å forstå andre kulturer ut fra deres egne premisser. Nyttig for toleranse, men kritiseres hvis man unnlater å kritisere brudd på menneskerettigheter (som tvangsekteskap).
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-4">
+            <h4 class="font-semibold text-nordic-ink mb-1">Kulturell appropriasjon</h4>
+            <p class="text-xs text-nordic-muted leading-relaxed">
+              Når majoriteten låner eller tjener penger på minoriteters symboler (f.eks. billige kopier av samiske kofter) uten respekt for opprinnelsen.
+            </p>
+          </div>
+        </div>
+
+        <!-- Supersammendrag Kap 4 Delemne 2 -->
+        <aside aria-label="Supersammendrag" class="mt-8 rounded-2xl border-l-4 border-nordic-accent bg-nordic-accentSoft/45 border-y border-r border-nordic-border p-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-nordic-accentDark">Supersammendrag • Kap. 4, Delemne 2</span>
+            <span class="text-[11px] font-medium text-nordic-muted">Kompetansemål: Urfolk, minoriteter og kulturmøter</span>
+          </div>
+          <ul class="space-y-1.5 text-xs sm:text-sm text-nordic-ink/90 list-disc list-inside">
+            <li><strong>Urfolk og nasjonale minoriteter:</strong> Samene er Norges urfolk i Sápmi; kvener/norskfinner, skogfinner, jøder, romer og romanifolk/tatere er våre fem nasjonale minoriteter.</li>
+            <li><strong>Assimilering vs. integrering:</strong> Staten har gått bort fra tidligere <em>fornorsking</em> til dagens mål om <em>integrering</em> med rett til å bevare egen identitet.</li>
+            <li><strong>Analysebegreper:</strong> Skill mellom <em>etnosentrisme</em> (egen kultur som fasit), <em>kulturrelativisme</em> (forstå innenfra, men ikke godta menneskerettighetsbrudd) og <em>kulturell appropriasjon</em>.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- KAP 4 DELEMNE 3: INNVANDRING (SSB 2026 + SKIEN/TELEMARK) -->
+      <section id="kap4-innvandring" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Innvandring og flerkulturelt samfunn (2025–2026)
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-4">
+          Rundt én femtedel av Norges befolkning består i dag av innvandrere og norskfødte med innvandrerforeldre. Folk flytter til Norge av ulike grunner: som <em>arbeidsinnvandrere</em> (særlig gjennom EØS), <em>familieinnvandrere</em> eller <em>flyktninger</em> på flukt fra krig og forfølgelse.
+        </p>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          Nasjonale SSB-tall (2024–2026) viser at innvandrere fra <strong>Polen</strong> fortsatt er den største enkeltgruppen i Norge, fulgt av <strong>Ukraina</strong>, Litauen, Syria, Somalia og Pakistan. Samtidig viser tall fra mars 2026 at innvandringen har bremset noe opp: veksten i arbeidsinnvandring fra Polen er historisk lav, og tilstrømmingen fra Ukraina har flatet ut etter innstramminger i 2024 og 2025.
+        </p>
+
+        <!-- Lokalt eksempel: Skien og Telemark (SSB 1. januar 2026) -->
+        <div class="rounded-2xl bg-nordic-accentSoft/60 border border-nordic-accent/20 p-6 mb-6">
+          <span class="inline-block text-[11px] font-semibold uppercase tracking-wider text-nordic-accentDark mb-1">Lokalt eksempel • SSB-tall per 1. januar 2026</span>
+          <h3 class="text-lg font-semibold text-nordic-ink mb-3">Innvandring i Skien kommune og Telemark</h3>
+          <div class="grid sm:grid-cols-3 gap-3 text-center text-sm mb-4">
+            <div class="rounded-xl bg-white border border-nordic-border p-4">
+              <span class="block text-2xl font-bold text-nordic-ink">57 048</span>
+              <span class="text-xs text-nordic-muted">Innbyggere i Skien kommune (2026)</span>
+            </div>
+            <div class="rounded-xl bg-white border border-nordic-border p-4">
+              <span class="block text-2xl font-bold text-nordic-ink">16,2 %</span>
+              <span class="text-xs text-nordic-muted">Innvandrere i Skien (9 206 personer)</span>
+            </div>
+            <div class="rounded-xl bg-white border border-nordic-border p-4">
+              <span class="block text-2xl font-bold text-nordic-ink">+ 2 743</span>
+              <span class="text-xs text-nordic-muted">Norskfødte med innvandrerforeldre i Skien (totalt over 20 %)</span>
+            </div>
+          </div>
+          <p class="text-xs sm:text-sm text-nordic-ink/90 leading-relaxed">
+            I <strong>Skien</strong> er innvandrere fra <strong>Polen</strong> den største enkeltgruppen, fulgt av veletablerte miljøer fra <strong>Somalia, Irak og Syria</strong> samt sterk vekst fra <strong>Ukraina</strong> de siste årene. På fylkesnivå i <strong>Telemark</strong> utgjør Ukraina og Polen de to største gruppene, og Telemark har en høyere andel innvandrere med fluktbakgrunn (rundt 47 %) enn landssnittet. I flere distriktskommuner i Telemark (som Hjartdal og Midt-Telemark) har bosetting av flyktninger bidratt til å dempe befolkningsnedgangen og holde liv i skoler og lokalt næringsliv.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <h3 class="font-semibold text-nordic-ink mb-1">Normendring i minoritetskulturer</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Når minoriteter lever side om side med majoriteten, endrer normer seg ofte raskt – for eksempel synet på å velge ektefelle selv. Mens over 70 % av norskpakistanske kvinner giftet seg med en partner fra foreldrenes hjemland i 1996, sank andelen til rundt 20 % allerede i 2018.
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <h3 class="font-semibold text-nordic-ink mb-1">Gjensidig påvirkning</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Minoriteter påvirker også majoritetskulturen – ikke bare gjennom nye mattradisjoner og idretter, men også i ungdomskulturen. Nyere undersøkelser viser at norsk ungdom drikker mindre alkohol enn før, og at dette henger sammen med at alkoholfrie normer i innvandrermiljøer gjør det lettere for alle i vennegjengen å takke nei.
+            </p>
+          </div>
+        </div>
+
+        <!-- Supersammendrag Kap 4 Delemne 3 -->
+        <aside aria-label="Supersammendrag" class="mt-8 rounded-2xl border-l-4 border-nordic-accent bg-nordic-accentSoft/45 border-y border-r border-nordic-border p-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-nordic-accentDark">Supersammendrag • Kap. 4, Delemne 3</span>
+            <span class="text-[11px] font-medium text-nordic-muted">Kompetansemål: Endring i minoritet og majoritet</span>
+          </div>
+          <ul class="space-y-1.5 text-xs sm:text-sm text-nordic-ink/90 list-disc list-inside">
+            <li><strong>Årsaker og trender (2025–2026):</strong> Innvandring skyldes arbeid, familie eller flukt. Polen og Ukraina topper i Norge og Telemark, selv om veksten har bremset i 2025–2026.</li>
+            <li><strong>Skien og Telemark:</strong> Over 20 % av Skiens befolkning har innvandrerbakgrunn, og fluktbosetting har dempet folketallsnedgangen i flere Telemark-kommuner.</li>
+            <li><strong>Gjensidig endring:</strong> Normer endrer seg begge veier – fra større frihet i partnervalg til lavere alkoholkonsum blant ungdom.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- KAP 4 DELEMNE 4: RASISME, DISKRIMINERING OG YTRINGSFRIHET -->
+      <section id="kap4-rasisme" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-4">
+          Rasisme, diskriminering og ytringsfrihetens grenser
+        </h2>
+        <p class="text-sm sm:text-base text-nordic-ink/90 leading-relaxed mb-6">
+          <strong>Rasisme</strong> er forestillinger om at noen mennesker er mer eller mindre verdt på grunn av hudfarge eller etnisk opprinnelse. Rasisme fører ofte til <strong>diskriminering</strong> – at mennesker fratas like muligheter på grunn av bakgrunnen sin, for eksempel på utesteder, på boligmarkedet eller i arbeidslivet. Forskning har vist at jobbsøkere med utenlandskklingende navn har rundt 25 % lavere sjanse for å bli innkalt til intervju enn søkere med norskklingende navn og identisk CV.
+        </p>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <h3 class="font-semibold text-nordic-ink mb-1">Generalisering, fordommer og statistikk</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              Å <em>generalisere</em> betyr å tro at noe som gjelder én person, gjelder hele gruppen. Når generaliseringer blir låste forhåndsdommer uten kjennskap til enkeltpersoner, kalles det <strong>fordommer</strong>. Statistikk kan vise sammenhenger (f.eks. mellom bakgrunn og sysselsetting eller kriminalitet), men forklarer ikke <em>årsaken</em>: levekår, traumer, fattigdom og diskriminering spiller ofte en langt større rolle enn «kultur».
+            </p>
+          </div>
+          <div class="rounded-xl bg-white border border-nordic-border p-5">
+            <h3 class="font-semibold text-nordic-ink mb-1">Ytringsfrihet vs. hatefulle ytringer</h3>
+            <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+              <strong>Ytringsfrihet</strong> betyr at staten ikke skal sensurere meninger, selv om flertallet misliker dem. Samtidig setter <em>straffeloven (§ 185)</em> grenser: det er forbudt å true eller fremme hat mot noen på grunn av hudfarge, etnisitet, religion, seksuell orientering eller nedsatt funksjonsevne (straffes med bot eller fengsel). I tillegg forbyr <em>likestillings- og diskrimineringsloven</em> forskjellsbehandling i arbeidslivet.
+            </p>
+          </div>
+        </div>
+
+        <div class="rounded-2xl bg-white border border-nordic-border p-6">
+          <h3 class="text-base font-semibold text-nordic-ink mb-2">Hvordan bekjempe rasisme og hat?</h3>
+          <p class="text-xs sm:text-sm text-nordic-muted leading-relaxed">
+            Lovverk og politi er viktige, men hverdagsreaksjoner betyr ofte enda mer: å si ifra i vennegjengen når noen kommer med rasistiske vitser eller netthets, hindrer at hatefulle holdninger normaliseres. I arbeidslivet kan tiltak som anonymiserte søknader, bedre godkjenning av utenlandsk utdanning og moderat positiv særbehandling ved like kvalifikasjoner bidra til reell likestilling.
+          </p>
+        </div>
+
+        <!-- Supersammendrag Kap 4 Delemne 4 -->
+        <aside aria-label="Supersammendrag" class="mt-8 rounded-2xl border-l-4 border-nordic-accent bg-nordic-accentSoft/45 border-y border-r border-nordic-border p-5">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-nordic-accentDark">Supersammendrag • Kap. 4, Delemne 4</span>
+            <span class="text-[11px] font-medium text-nordic-muted">Kompetansemål: Forebygge rasisme og drøfte ytringsfrihet</span>
+          </div>
+          <ul class="space-y-1.5 text-xs sm:text-sm text-nordic-ink/90 list-disc list-inside">
+            <li><strong>Rasisme og diskriminering:</strong> Ulike muligheter på jobb- og boligmarkedet bunner ofte i ubevisst generalisering og <em>fordommer</em>, ikke reelle kvalifikasjoner.</li>
+            <li><strong>Bruk statistikk kritisk:</strong> Tall viser korrelasjon, ikke årsak – levekår og utenforskap forklarer mer enn etnisitet.</li>
+            <li><strong>Ytringsfrihetens grenser:</strong> Ytringsfriheten gir rett til skarpe meninger, men straffeloven forbyr trusler og hatefulle ytringer, og hverdagsreaksjoner er avgjørende for å forebygge hat.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <!-- KAP 4: SAMMENDRAG -->
+      <section id="kap4-sammendrag" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <div class="rounded-2xl bg-nordic-ink text-white p-6 sm:p-8">
+          <span class="inline-block text-xs font-semibold uppercase tracking-wider text-teal-300 mb-2">Kort oppsummert</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-semibold mb-4">Sammendrag av Kapittel 4</h2>
+          <ul class="space-y-3 text-sm text-slate-200 leading-relaxed">
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Kultur i endring:</strong> Kultur er levemåter, normer og verdier som overføres gjennom sosialisering og stadig utvikles. Norsk kultur preges av sekularisering, likestilling, uformell tone og en blanding av nye og gamle tradisjoner – med lokale variasjoner fra bygd til industristeder som Herøya i Grenland.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Urfolk og minoriteter:</strong> Samene er Norges urfolk i Sápmi, og kvener/norskfinner, skogfinner, jøder, romer og romanifolk/tatere er nasjonale minoriteter. Dagens mål er integrering, ikke tidligere tiders fornorsking og assimilering.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Innvandring og lokal påvirkning (2026):</strong> Over 20 % av Skiens innbyggere har innvandrerbakgrunn, og i Telemark er Ukraina og Polen de største gruppene. Kulturpåvirkningen går begge veier – fra normer i familieliv til lavere alkoholbruk blant ungdom.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400 shrink-0"></span>
+              <span><strong>Rasisme, diskriminering og ytringsfrihet:</strong> Fordommer og generaliseringer skaper utenforskap og diskriminering i arbeidslivet. Straffeloven og diskrimineringsloven setter grenser for hatefulle ytringer og usaklig forskjellsbehandling, mens aktiv motstand i hverdagen forebygger rasisme.</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- KAP 4: OPPGAVER -->
+      <section id="kap4-oppgaver" data-spy class="mb-16 pt-4 border-t border-nordic-border">
+        <h2 class="font-serif text-3xl font-semibold tracking-tight text-nordic-ink mb-6">
+          Oppgaver til Kapittel 4
+        </h2>
+        <div class="rounded-2xl bg-white border border-nordic-border p-6">
+          <ol class="list-decimal list-inside space-y-2.5 text-sm text-nordic-ink/90">
+            <li>Hva betyr begrepene <em>sosialisering</em> og <em>subkultur</em>? Gi eksempler på subkulturer du kjenner til blant ungdom i dag.</li>
+            <li>Forklar forskjellen på <em>assimilering (fornorsking)</em> og <em>integrering</em>, og nevn Norges urfolk og de fem nasjonale minoritetene.</li>
+            <li>Forklar begrepene <em>etnosentrisme</em>, <em>kulturrelativisme</em> og <em>kulturell appropriasjon</em> med egne eksempler.</li>
+            <li><strong>Lokalt blikk (Skien og Telemark):</strong> Over 20 % av innbyggerne i Skien har innvandrerbakgrunn (SSB, 2026), og Telemark har høy andel bosatte med fluktbakgrunn (ca. 47 %). Diskuter hvordan innvandring og industritradisjoner (som Herøya) preger kultur og lokalsamfunn i Grenland.</li>
+            <li>Hvor bør grensen gå mellom <em>ytringsfrihet</em> og straffbare <em>hatefulle ytringer</em>? Bruk eksempler fra sosiale medier eller samfunnsdebatten.</li>
+          </ol>
+        </div>
+      </section>
+
       <!-- Plassholder for neste kapittel -->
       <section id="future-chapters-notice" class="rounded-2xl border border-dashed border-nordic-border bg-white/60 p-6 text-center">
         <p class="text-xs font-semibold uppercase tracking-wider text-nordic-muted mb-1">Videre i Nils sin samfunnsbok</p>
@@ -2502,7 +2944,7 @@
       </section>
 
       <footer class="mt-12 pt-6 border-t border-nordic-border text-xs text-nordic-muted flex flex-col sm:flex-row items-center justify-between gap-2">
-        <span>Nils sin samfunnsbok — Kapittel 1 og 2</span>
+        <span>Nils sin samfunnsbok — Kapittel 1, 2 og 4</span>
         <span>Bygget med Tailwind CSS</span>
       </footer>
     </main>
@@ -2516,7 +2958,6 @@
     // =========================================================================
     const FUTURE_CHAPTERS = [
       { number: 3, title: 'Du og samfunnet', url: '#future-chapters-notice', ready: false },
-      { number: 4, title: 'Kultur i endring', url: '#future-chapters-notice', ready: false },
       { number: 5, title: 'Skape verdier', url: '#future-chapters-notice', ready: false },
       { number: 6, title: 'Ulikhet og utenforskap', url: '#future-chapters-notice', ready: false },
       { number: 7, title: 'Globale utfordringer', url: '#future-chapters-notice', ready: false },
@@ -2718,7 +3159,18 @@ document.addEventListener("DOMContentLoaded", () => {
         "riksrett": "En særskilt domstol som kan dømme stortingsrepresentanter, regjeringsmedlemmer og høyesterettsdommere for lovbrudd begått i embetet.",
         "den fjerde statsmakt": "Betegnelse på frie og uavhengige medier fordi de gransker makthavere og avslører maktmisbruk i samfunnet.",
         "mistillitsforslag": "Forslag i Stortinget om at regjeringen ikke lenger har tillit. Får forslaget flertall, må regjeringen gå av.",
-        "kabinettsspørsmål": "Når regjeringen stiller et ultimatum til Stortinget og truer med å gå av dersom den ikke får flertall i en bestemt sak."
+        "kabinettsspørsmål": "Når regjeringen stiller et ultimatum til Stortinget og truer med å gå av dersom den ikke får flertall i en bestemt sak.",
+        "sosialisering": "Prosessen der vi gradvis lærer og tar opp i oss normer, verdier, språk og handlingsmåter i samfunnet vi vokser opp i.",
+        "subkultur": "En mindre kultur innenfor en større kultur, med egne normer, stil eller interesser (for eksempel gamere, skatere eller rånere).",
+        "assimilering": "Når en minoritetsgruppe gir opp sine kulturelle særtrekk og blir helt lik majoritetskulturen.",
+        "fornorsking": "Den norske statens tidligere assimileringspolitikk fra midten av 1800-tallet til ca. 1960 for å gjøre samer og nasjonale minoriteter mest mulig like majoriteten.",
+        "integrering": "At minoriteter deltar i samfunnet på like vilkår som majoriteten, samtidig som de har rett til å bevare sin egen kultur og identitet.",
+        "etnosentrisme": "Å vurdere andre kulturer med sin egen kultur som målestokk, slik at det fremmede lett oppleves som rart eller mindreverdig.",
+        "kulturrelativisme": "Å prøve å forstå en annen kultur ut fra dens egne premisser og verdier i stedet for å dømme den etter sin egen kultur.",
+        "kulturell appropriasjon": "Når elementer fra en minoritetskultur lånes av majoriteten uten respekt eller forståelse for den opprinnelige betydningen.",
+        "rasisme": "Forestillinger om at noen mennesker har høyere eller lavere verdi enn andre på grunn av hudfarge eller etnisk opprinnelse.",
+        "diskriminering": "Urettferdig forskjellsbehandling der mennesker fratas rettigheter eller muligheter på grunn av bakgrunn, kjønn, religion eller funksjonsevne.",
+        "fordommer": "Forhåndsoppfatninger om enkeltpersoner basert på generaliseringer om gruppen de tilhører, uten å kjenne personen."
     };
 
     const innhold = document.getElementById('main-content');
