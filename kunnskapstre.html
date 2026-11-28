@@ -107,9 +107,9 @@
       </p>
       <div id="filter-pills" class="flex flex-wrap gap-1.5 text-xs font-medium">
         <button data-filter="all" class="filter-pill px-3 py-1.5 rounded-full bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950">Alle kapitler</button>
-        <button data-filter="1" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 1: Politikk</button>
-        <button data-filter="2" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 2: Demokrati</button>
-        <button data-filter="3" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 3: Du &amp; samfunnet</button>
+        <button data-filter="1" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 1: Bli samfunnsborger</button>
+        <button data-filter="2" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 2: Politikk</button>
+        <button data-filter="3" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 3: Demokrati</button>
         <button data-filter="4" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 4: Kultur &amp; mangfold</button>
       </div>
     </div>
@@ -159,77 +159,7 @@
     const TREE_DATA = [
       {
         chapter: 1,
-        title: 'Kapittel 1: Politikk',
-        subtitle: 'Makt, verdier, konfliktlinjer og ideologier',
-        nodes: [
-          {
-            id: 'k1-makt',
-            title: 'Makt og politikk',
-            summary: 'Hva politikk er, hvordan makt utøves direkte og indirekte, og hvordan konflikter om fordeling, verdier og miljø løses i et samfunn.',
-            terms: ['Makt', 'Politikk', 'Velferdsstat', 'Konfliktlinjer', 'Bærekraft'],
-            connections: ['k2-maktfordeling', 'k3-kjonn'],
-            href: 'index.html#makt-og-politikk'
-          },
-          {
-            id: 'k1-partier',
-            title: 'Partier og akser',
-            summary: 'Høyre–venstre-aksen i økonomisk politikk, sentrum–periferi og verdikonflikter – og hvor de norske partiene plasserer seg.',
-            terms: ['Røde vs. blå partier', 'Sentrum–periferi', 'Skatt og velferd'],
-            connections: ['k2-stortinget', 'k2-lokalvalg'],
-            href: 'index.html#partienes-plassering'
-          },
-          {
-            id: 'k1-ideologi',
-            title: 'Ideologier i praksis',
-            summary: 'Sosialisme, sosialdemokrati, liberalisme, konservatisme og grønn ideologi – hvordan ulike grunnsyn former konkrete politiske valg.',
-            terms: ['Ideologi', 'Sosialdemokrati', 'Liberalisme', 'Konservatisme'],
-            connections: ['k4-verdier'],
-            href: 'index.html#ideologi-og-fakta'
-          }
-        ]
-      },
-      {
-        chapter: 2,
-        title: 'Kapittel 2: Demokratiet i praksis',
-        subtitle: 'Folkestyre, Storting, lokalpolitikk i Telemark og USA',
-        nodes: [
-          {
-            id: 'k2-maktfordeling',
-            title: 'Maktfordeling og prinsipper',
-            summary: 'Demokratiske grunnprinsipper (frie valg, ytringsfrihet, rettsstat) og maktfordelingen mellom Stortinget, regjeringen og domstolene.',
-            terms: ['Maktfordelingsprinsippet', 'Parlamentarisme', 'Rettssikkerhet'],
-            connections: ['k1-makt', 'k3-kriminalitet', 'k4-rasisme'],
-            href: 'index.html#kap2-maktfordeling'
-          },
-          {
-            id: 'k2-stortinget',
-            title: 'Regjering og Storting (2025–2029)',
-            summary: 'Hvordan regjeringen styrer, hvordan Stortinget vedtar lover og statsbudsjett, og mandatfordelingen etter valget i 2025.',
-            terms: ['Mindretallsregjering', 'Sperregrense', 'Utjevningsmandat'],
-            connections: ['k1-partier'],
-            href: 'index.html#kap2-stortinget'
-          },
-          {
-            id: 'k2-lokalvalg',
-            title: 'Kommuner, fylke og Skien',
-            summary: 'Hva Skien kommune og Telemark fylkeskommune har ansvar for – og at lokaldemokrati handler om mer enn hvem som roper høyest.',
-            terms: ['Skien kommune', 'Telemark fylke', 'Slengere', 'Folkestyre'],
-            connections: ['k1-partier', 'k4-innvandring'],
-            href: 'index.html#kap2-kommunene'
-          },
-          {
-            id: 'k2-usa',
-            title: 'USA: Føderalisme og valg',
-            summary: 'Kontrasten mellom det norske parlamentariske systemet og USAs presidentstyre, føderalisme og valgmannssystem.',
-            terms: ['Føderalisme', 'Presidentstyre', 'Valgmenn'],
-            connections: ['k2-maktfordeling'],
-            href: 'index.html#kap2-usa'
-          }
-        ]
-      },
-      {
-        chapter: 3,
-        title: 'Kapittel 3: Bli samfunnsborger',
+        title: 'Kapittel 1: Bli samfunnsborger',
         subtitle: 'Normer, sosialisering, likestilling og straff',
         nodes: [
           {
@@ -263,6 +193,76 @@
             terms: ['Kriminell lavalder', 'GDPR', 'Individualprevensjon', 'Forvaring', 'Samfunnsstraff'],
             connections: ['k2-maktfordeling', 'k4-rasisme'],
             href: 'index.html#kap3-kriminalitet'
+          }
+        ]
+      },
+      {
+        chapter: 2,
+        title: 'Kapittel 2: Politikk',
+        subtitle: 'Makt, verdier, konfliktlinjer og ideologier',
+        nodes: [
+          {
+            id: 'k1-makt',
+            title: 'Makt og politikk',
+            summary: 'Hva politikk er, hvordan makt utøves direkte og indirekte, og hvordan konflikter om fordeling, verdier og miljø løses i et samfunn.',
+            terms: ['Makt', 'Politikk', 'Velferdsstat', 'Konfliktlinjer', 'Bærekraft'],
+            connections: ['k2-maktfordeling', 'k3-kjonn'],
+            href: 'index.html#makt-og-politikk'
+          },
+          {
+            id: 'k1-partier',
+            title: 'Partier og akser',
+            summary: 'Høyre–venstre-aksen i økonomisk politikk, sentrum–periferi og verdikonflikter – og hvor de norske partiene plasserer seg.',
+            terms: ['Røde vs. blå partier', 'Sentrum–periferi', 'Skatt og velferd'],
+            connections: ['k2-stortinget', 'k2-lokalvalg'],
+            href: 'index.html#partienes-plassering'
+          },
+          {
+            id: 'k1-ideologi',
+            title: 'Ideologier i praksis',
+            summary: 'Sosialisme, sosialdemokrati, liberalisme, konservatisme og grønn ideologi – hvordan ulike grunnsyn former konkrete politiske valg.',
+            terms: ['Ideologi', 'Sosialdemokrati', 'Liberalisme', 'Konservatisme'],
+            connections: ['k4-verdier'],
+            href: 'index.html#ideologi-og-fakta'
+          }
+        ]
+      },
+      {
+        chapter: 3,
+        title: 'Kapittel 3: Demokratiet i praksis',
+        subtitle: 'Folkestyre, Storting, lokalpolitikk i Telemark og USA',
+        nodes: [
+          {
+            id: 'k2-maktfordeling',
+            title: 'Maktfordeling og prinsipper',
+            summary: 'Demokratiske grunnprinsipper (frie valg, ytringsfrihet, rettsstat) og maktfordelingen mellom Stortinget, regjeringen og domstolene.',
+            terms: ['Maktfordelingsprinsippet', 'Parlamentarisme', 'Rettssikkerhet'],
+            connections: ['k1-makt', 'k3-kriminalitet', 'k4-rasisme'],
+            href: 'index.html#kap2-maktfordeling'
+          },
+          {
+            id: 'k2-stortinget',
+            title: 'Regjering og Storting (2025–2029)',
+            summary: 'Hvordan regjeringen styrer, hvordan Stortinget vedtar lover og statsbudsjett, og mandatfordelingen etter valget i 2025.',
+            terms: ['Mindretallsregjering', 'Sperregrense', 'Utjevningsmandat'],
+            connections: ['k1-partier'],
+            href: 'index.html#kap2-stortinget'
+          },
+          {
+            id: 'k2-lokalvalg',
+            title: 'Kommuner, fylke og Skien',
+            summary: 'Hva Skien kommune og Telemark fylkeskommune har ansvar for – og at lokaldemokrati handler om mer enn hvem som roper høyest.',
+            terms: ['Skien kommune', 'Telemark fylke', 'Slengere', 'Folkestyre'],
+            connections: ['k1-partier', 'k4-innvandring'],
+            href: 'index.html#kap2-kommunene'
+          },
+          {
+            id: 'k2-usa',
+            title: 'USA: Føderalisme og valg',
+            summary: 'Kontrasten mellom det norske parlamentariske systemet og USAs presidentstyre, føderalisme og valgmannssystem.',
+            terms: ['Føderalisme', 'Presidentstyre', 'Valgmenn'],
+            connections: ['k2-maktfordeling'],
+            href: 'index.html#kap2-usa'
           }
         ]
       },
