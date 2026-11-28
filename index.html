@@ -249,6 +249,7 @@
       .rounded-2xl {
         break-inside: avoid;
       }
+      body[data-print-only="kap1"] #velkommen,
       body[data-print-only="kap1"] section[id^="kap2-"],
       body[data-print-only="kap1"] section[id^="kap3-"],
       body[data-print-only="kap1"] section[id^="kap4-"] {
@@ -325,7 +326,7 @@
     >
       <!-- Plattform-logo / tittel -->
       <div class="px-5 py-5 border-b border-nordic-border flex items-center justify-between gap-2">
-        <a href="#intro" class="flex items-center gap-3 min-w-0 group">
+        <a href="#velkommen" class="flex items-center gap-3 min-w-0 group">
           <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-nordic-accent text-white dark:text-slate-950 font-bold text-sm tracking-tight shadow-xs group-hover:bg-nordic-accentDark transition">
             NN
           </span>
@@ -370,6 +371,18 @@
 
       <!-- Navigasjonsliste (Kapittel 1 aktiv + klargjort for kapittel 2, 3, ...) -->
       <nav id="chapter-nav" class="flex-1 overflow-y-auto px-3 py-4 space-y-1.5 text-sm">
+
+        <!-- Startside og visningsmåte -->
+        <div class="grid grid-cols-2 gap-1.5 mb-2">
+          <a href="#velkommen" data-spy-link="velkommen" class="spy-link flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-lg border border-nordic-border bg-nordic-bg/60 text-xs font-semibold text-nordic-ink hover:bg-white transition">
+            <span>🏠</span>
+            <span>Velkommen</span>
+          </a>
+          <a href="kunnskapstre.html" class="flex items-center justify-center gap-1.5 px-2.5 py-2 rounded-lg bg-nordic-ink text-white text-xs font-semibold hover:opacity-90 transition" title="Bytt til visuell oversikt i Kunnskapstreet">
+            <span>🌳</span>
+            <span>Kunnskapstre</span>
+          </a>
+        </div>
 
         <!-- KAPITTEL 1 (Aktivt kapittel med scroll-spy) -->
         <div class="chapter-group rounded-xl border border-nordic-border/80 bg-nordic-bg/40 p-2">
@@ -710,8 +723,99 @@
         </a>
       </div>
 
+      <!-- VELKOMSTSIDE MED BOKCOVER -->
+      <section id="velkommen" data-spy class="mb-16">
+        <div class="nordic-hero-bg rounded-3xl bg-white border border-nordic-border p-6 sm:p-10 shadow-2xs mb-6">
+          <div class="grid md:grid-cols-[250px_1fr] lg:grid-cols-[270px_1fr] gap-8 items-center">
+            <div class="mx-auto w-full max-w-[250px] md:max-w-none">
+              <img
+                src="images/book-cover.jpg"
+                alt="Bokcover: Samfunnskunnskap for videregående skole vg2 (LK20), av Nils 2026"
+                class="w-full h-auto rounded-xl shadow-lg border border-nordic-border"
+              />
+            </div>
+
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 rounded-full bg-nordic-accentSoft px-3 py-1 text-xs font-semibold text-nordic-accentDark">
+                <span>Samfunnskunnskap Vg2 • LK20</span>
+              </div>
+
+              <h1 class="font-serif text-3xl sm:text-4xl font-semibold tracking-tight text-nordic-ink leading-tight">
+                Velkommen til Samfunnskunnskap
+              </h1>
+
+              <p class="text-sm sm:text-base text-nordic-muted leading-relaxed">
+                Dette er din digitale lærebok i samfunnskunnskap. Her utforsker du politikk, demokrati, sosialisering, likestilling, rettssikkerhet og kulturelt mangfold – med ferske tall, infografikk og lokale eksempler fra Skien og Telemark.
+              </p>
+
+              <!-- Slik bruker du boken -->
+              <div class="rounded-2xl bg-nordic-bg border border-nordic-border p-4 space-y-2.5 text-xs sm:text-sm text-nordic-ink/90">
+                <p class="font-semibold text-nordic-ink">Slik bruker du boken:</p>
+                <div class="flex items-start gap-2.5">
+                  <span class="text-base leading-none mt-0.5">📖</span>
+                  <p><strong>Velg kapittel i menyen til venstre:</strong> Klikk på et kapittel for å lese i klassisk bokvisning med infografikk, begrepsforklaringer, oppgaver og PDF-eksport.</p>
+                </div>
+                <div class="flex items-start gap-2.5">
+                  <span class="text-base leading-none mt-0.5">🌳</span>
+                  <p><strong>Bytt visningsmåte med Kunnskapstreet:</strong> Ønsker du å se hvordan temaer, begreper og kapitler henger sammen på tvers? Klikk på <strong>Kunnskapstre</strong> i menyen til venstre (eller knappen under) for en visuell og interaktiv oversikt.</p>
+                </div>
+              </div>
+
+              <div class="flex flex-wrap gap-3 pt-1">
+                <a href="#intro" class="inline-flex items-center gap-2 rounded-xl bg-nordic-accent text-white dark:text-slate-950 px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-xs hover:bg-nordic-accentDark transition">
+                  <span>Start med Kapittel 1: Dette er politikk!</span>
+                  <span>→</span>
+                </a>
+                <a href="kunnskapstre.html" class="inline-flex items-center gap-2 rounded-xl bg-nordic-ink text-white px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-xs hover:opacity-90 transition">
+                  <span>🌳 Åpne Kunnskapstreet</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hurtigoversikt over kapitlene -->
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3 text-sm">
+          <a href="#intro" class="group rounded-2xl bg-white border border-nordic-border hover:border-nordic-accent p-4 transition shadow-2xs">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-nordic-accent text-white text-xs font-bold">1</span>
+              <span class="text-xs text-nordic-muted group-hover:text-nordic-accent transition">Åpne →</span>
+            </div>
+            <h2 class="font-serif font-semibold text-nordic-ink mb-1">Dette er politikk!</h2>
+            <p class="text-xs text-nordic-muted leading-relaxed">Makt, konfliktlinjer, velferdsstat, ideologier og partiene i Norge.</p>
+          </a>
+
+          <a href="#kap2-intro" class="group rounded-2xl bg-white border border-nordic-border hover:border-nordic-accent p-4 transition shadow-2xs">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-nordic-accent text-white text-xs font-bold">2</span>
+              <span class="text-xs text-nordic-muted group-hover:text-nordic-accent transition">Åpne →</span>
+            </div>
+            <h2 class="font-serif font-semibold text-nordic-ink mb-1">Demokratiet i praksis</h2>
+            <p class="text-xs text-nordic-muted leading-relaxed">Maktfordeling, Stortinget, regjeringen, lokalstyre i Skien og USA.</p>
+          </a>
+
+          <a href="#kap3-intro" class="group rounded-2xl bg-white border border-nordic-border hover:border-nordic-accent p-4 transition shadow-2xs">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-nordic-accent text-white text-xs font-bold">3</span>
+              <span class="text-xs text-nordic-muted group-hover:text-nordic-accent transition">Åpne →</span>
+            </div>
+            <h2 class="font-serif font-semibold text-nordic-ink mb-1">Du og samfunnet</h2>
+            <p class="text-xs text-nordic-muted leading-relaxed">Normer, roller, algoritmisk sosialisering, likestilling og straff.</p>
+          </a>
+
+          <a href="#kap4-intro" class="group rounded-2xl bg-white border border-nordic-border hover:border-nordic-accent p-4 transition shadow-2xs">
+            <div class="flex items-center justify-between mb-2">
+              <span class="inline-flex h-6 w-6 items-center justify-center rounded-md bg-nordic-accent text-white text-xs font-bold">4</span>
+              <span class="text-xs text-nordic-muted group-hover:text-nordic-accent transition">Åpne →</span>
+            </div>
+            <h2 class="font-serif font-semibold text-nordic-ink mb-1">Kultur og mangfold</h2>
+            <p class="text-xs text-nordic-muted leading-relaxed">Kulturell variasjon, Sápmi, innvandring i Telemark og ytringsfrihet.</p>
+          </a>
+        </div>
+      </section>
+
       <!-- 1. INNLEDNING -->
-      <section id="intro" data-spy class="mb-16">
+      <section id="intro" data-spy class="mb-16 pt-10 border-t-2 border-nordic-border">
         <div class="nordic-hero-bg rounded-3xl bg-white border border-nordic-border p-6 sm:p-9 shadow-2xs mb-8">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div class="inline-flex items-center gap-2 rounded-full bg-nordic-accentSoft px-3 py-1 text-xs font-semibold text-nordic-accentDark">

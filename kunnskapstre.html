@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="nb" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kunnskapstreet · Samfunnskunnskap – Nils sin samfunnsbok</title>
+  <script>
+    (function () {
+      try {
+        if (localStorage.getItem('delta-theme') === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif'],
+            serif: ['Source Serif 4', 'Georgia', 'serif'],
+          },
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --ink: #0f172a;
+      --muted: #475569;
+      --border: #e2e8f0;
+      --accent: #0f766e;
+      --accent-soft: #ccfbf1;
+    }
+    html.dark {
+      --bg: #0b111e;
+      --surface: #111827;
+      --ink: #f1f5f9;
+      --muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.22);
+      --accent: #2dd4bf;
+      --accent-soft: rgba(45, 212, 191, 0.14);
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--ink);
+    }
+    .surface-card {
+      background-color: var(--surface);
+      border-color: var(--border);
+    }
+    .node-btn {
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    .node-btn:hover {
+      transform: translateY(-1px);
+    }
+    .node-btn.active {
+      border-color: var(--accent);
+      background-color: var(--accent-soft);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 25%, transparent);
+    }
+  </style>
+</head>
+<body class="font-sans antialiased min-h-screen flex flex-col">
+
+  <!-- Topbar -->
+  <header class="sticky top-0 z-40 surface-card border-b backdrop-blur px-4 sm:px-6 py-3">
+    <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="index.html#velkommen" class="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-teal-700 dark:bg-teal-400 text-white dark:text-slate-950 font-bold text-sm">NN</a>
+        <div>
+          <span class="block text-[11px] uppercase tracking-wider font-semibold" style="color: var(--accent)">Samfunnskunnskap Vg2 • LK20</span>
+          <h1 class="font-serif text-base sm:text-lg font-bold leading-tight">🌳 Kunnskapstreet – visuell oversikt</h1>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2">
+        <a href="index.html#velkommen" class="px-3 py-1.5 rounded-lg border text-xs font-medium hover:opacity-80 transition surface-card">
+          🏠 Velkomstside
+        </a>
+        <a href="index.html#intro" class="px-3 py-1.5 rounded-lg bg-teal-700 hover:bg-teal-800 dark:bg-teal-400 dark:text-slate-950 text-white text-xs font-semibold transition">
+          📖 Klassisk bokvisning
+        </a>
+        <button id="theme-toggle" type="button" aria-label="Bytt lys/mørk modus" class="p-2 rounded-lg border surface-card text-xs hover:opacity-80 transition">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Workspace -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 sm:py-8 space-y-6">
+
+    <!-- Filterbar -->
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <p class="text-xs sm:text-sm" style="color: var(--muted)">
+        Klikk på en gren eller et emne i treet for å se oppsummering, nøkkelbegreper og tverrfaglige koblinger – og hopp rett inn i boka.
+      </p>
+      <div id="filter-pills" class="flex flex-wrap gap-1.5 text-xs font-medium">
+        <button data-filter="all" class="filter-pill px-3 py-1.5 rounded-full bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950">Alle kapitler</button>
+        <button data-filter="1" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 1: Politikk</button>
+        <button data-filter="2" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 2: Demokrati</button>
+        <button data-filter="3" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 3: Du &amp; samfunnet</button>
+        <button data-filter="4" class="filter-pill px-3 py-1.5 rounded-full border surface-card">Kap. 4: Kultur &amp; mangfold</button>
+      </div>
+    </div>
+
+    <!-- Split Grid: Tree Left, Inspector Right -->
+    <div class="grid lg:grid-cols-[1fr_380px] gap-6 items-start">
+
+      <!-- Tree Branches -->
+      <section id="tree-container" class="space-y-4" aria-label="Kunnskapstre over kapitler og temaer">
+        <!-- Populated by JS -->
+      </section>
+
+      <!-- Sticky Detail Inspector -->
+      <aside class="lg:sticky lg:top-20 surface-card border rounded-2xl p-6 shadow-sm space-y-4" aria-live="polite">
+        <div class="flex items-center justify-between gap-2">
+          <span id="detail-badge" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-semibold" style="background-color: var(--accent-soft); color: var(--accent)">
+            Velg et tema
+          </span>
+          <span id="detail-chap" class="text-xs" style="color: var(--muted)"></span>
+        </div>
+
+        <h2 id="detail-title" class="font-serif text-2xl font-bold leading-snug"></h2>
+        <p id="detail-summary" class="text-sm leading-relaxed" style="color: var(--muted)"></p>
+
+        <div>
+          <h3 class="text-xs font-semibold uppercase tracking-wider mb-2" style="color: var(--muted)">Sentrale begreper</h3>
+          <div id="detail-terms" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+        <div id="detail-links-box" class="rounded-xl p-3.5 border" style="border-color: var(--border); background-color: var(--bg)">
+          <h3 class="text-xs font-semibold uppercase tracking-wider mb-1.5" style="color: var(--accent)">🔗 Henger sammen med</h3>
+          <div id="detail-connections" class="flex flex-wrap gap-1.5"></div>
+        </div>
+
+        <div class="pt-2 flex flex-wrap gap-2">
+          <a id="detail-read-link" href="index.html#intro" class="inline-flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl bg-teal-700 hover:bg-teal-800 dark:bg-teal-400 dark:text-slate-950 text-white text-sm font-semibold transition">
+            <span>Les dette temaet i boka</span>
+            <span>→</span>
+          </a>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <script>
+    const TREE_DATA = [
+      {
+        chapter: 1,
+        title: 'Kapittel 1: Dette er politikk!',
+        subtitle: 'Makt, verdier, konfliktlinjer og ideologier',
+        nodes: [
+          {
+            id: 'k1-makt',
+            title: 'Makt og politikk',
+            summary: 'Hva politikk er, hvordan makt utøves direkte og indirekte, og hvordan konflikter om fordeling, verdier og miljø løses i et samfunn.',
+            terms: ['Makt', 'Politikk', 'Velferdsstat', 'Konfliktlinjer', 'Bærekraft'],
+            connections: ['k2-maktfordeling', 'k3-kjonn'],
+            href: 'index.html#makt-og-politikk'
+          },
+          {
+            id: 'k1-partier',
+            title: 'Partier og akser',
+            summary: 'Høyre–venstre-aksen i økonomisk politikk, sentrum–periferi og verdikonflikter – og hvor de norske partiene plasserer seg.',
+            terms: ['Røde vs. blå partier', 'Sentrum–periferi', 'Skatt og velferd'],
+            connections: ['k2-stortinget', 'k2-lokalvalg'],
+            href: 'index.html#partienes-plassering'
+          },
+          {
+            id: 'k1-ideologi',
+            title: 'Ideologier i praksis',
+            summary: 'Sosialisme, sosialdemokrati, liberalisme, konservatisme og grønn ideologi – hvordan ulike grunnsyn former konkrete politiske valg.',
+            terms: ['Ideologi', 'Sosialdemokrati', 'Liberalisme', 'Konservatisme'],
+            connections: ['k4-verdier'],
+            href: 'index.html#ideologi-og-fakta'
+          }
+        ]
+      },
+      {
+        chapter: 2,
+        title: 'Kapittel 2: Demokratiet i praksis',
+        subtitle: 'Folkestyre, Storting, lokalpolitikk i Telemark og USA',
+        nodes: [
+          {
+            id: 'k2-maktfordeling',
+            title: 'Maktfordeling og prinsipper',
+            summary: 'Demokratiske grunnprinsipper (frie valg, ytringsfrihet, rettsstat) og maktfordelingen mellom Stortinget, regjeringen og domstolene.',
+            terms: ['Maktfordelingsprinsippet', 'Parlamentarisme', 'Rettssikkerhet'],
+            connections: ['k1-makt', 'k3-kriminalitet', 'k4-rasisme'],
+            href: 'index.html#kap2-maktfordeling'
+          },
+          {
+            id: 'k2-stortinget',
+            title: 'Regjering og Storting (2025–2029)',
+            summary: 'Hvordan regjeringen styrer, hvordan Stortinget vedtar lover og statsbudsjett, og mandatfordelingen etter valget i 2025.',
+            terms: ['Mindretallsregjering', 'Sperregrense', 'Utjevningsmandat'],
+            connections: ['k1-partier'],
+            href: 'index.html#kap2-stortinget'
+          },
+          {
+            id: 'k2-lokalvalg',
+            title: 'Kommuner, fylke og Skien',
+            summary: 'Hva Skien kommune og Telemark fylkeskommune har ansvar for – og at lokaldemokrati handler om mer enn hvem som roper høyest.',
+            terms: ['Skien kommune', 'Telemark fylke', 'Slengere', 'Folkestyre'],
+            connections: ['k1-partier', 'k4-innvandring'],
+            href: 'index.html#kap2-kommunene'
+          },
+          {
+            id: 'k2-usa',
+            title: 'USA: Føderalisme og valg',
+            summary: 'Kontrasten mellom det norske parlamentariske systemet og USAs presidentstyre, føderalisme og valgmannssystem.',
+            terms: ['Føderalisme', 'Presidentstyre', 'Valgmenn'],
+            connections: ['k2-maktfordeling'],
+            href: 'index.html#kap2-usa'
+          }
+        ]
+      },
+      {
+        chapter: 3,
+        title: 'Kapittel 3: Du og samfunnet',
+        subtitle: 'Normer, sosialisering, likestilling og straff',
+        nodes: [
+          {
+            id: 'k3-normer',
+            title: 'Normer, verdier og roller',
+            summary: 'Formelle og uformelle normer, verdier i endring (som klimaansvar), rollekonflikter/krysspress og positive/negative sanksjoner.',
+            terms: ['Formelle/uformelle normer', 'Rollekonflikt', 'Sanksjoner'],
+            connections: ['k3-sosialisering', 'k4-kultur'],
+            href: 'index.html#kap3-normer-roller'
+          },
+          {
+            id: 'k3-sosialisering',
+            title: 'Sosialisering & algoritmer',
+            summary: 'Primærsosialisering i familien, sekundærsosialisering i skole/fritid og algoritmisk sosialisering via TikTok og Reels i Telemark.',
+            terms: ['Primærsosialisering', 'Sekundærsosialisering', 'Algoritmisk sosialisering', 'Identitet'],
+            connections: ['k3-normer', 'k4-kultur'],
+            href: 'index.html#kap3-sosialisering'
+          },
+          {
+            id: 'k3-kjonn',
+            title: 'Kjønnsroller og likestilling',
+            summary: 'Biologisk vs. sosialt kjønn, formell vs. reell likestilling, heteronormativitet, skeives rettigheter (1972–2017) og debatten om 3. juridisk kjønn.',
+            terms: ['Internalisering', 'Formell/reell likestilling', 'Heteronormativitet', 'Juridisk kjønn'],
+            connections: ['k1-makt', 'k4-rasisme'],
+            href: 'index.html#kap3-kjonn-likestilling'
+          },
+          {
+            id: 'k3-kriminalitet',
+            title: 'Kriminalitet og straff',
+            summary: 'Kriminell lavalder (15 år), internett som offentlig rom, GDPR, alderskurven (SSB 2025), individual-/allmennprevensjon og straffeformer.',
+            terms: ['Kriminell lavalder', 'GDPR', 'Individualprevensjon', 'Forvaring', 'Samfunnsstraff'],
+            connections: ['k2-maktfordeling', 'k4-rasisme'],
+            href: 'index.html#kap3-kriminalitet'
+          }
+        ]
+      },
+      {
+        chapter: 4,
+        title: 'Kapittel 4: Kultur og mangfold',
+        subtitle: 'Kulturell endring, Sápmi, innvandring og ytringsfrihet',
+        nodes: [
+          {
+            id: 'k4-kultur',
+            title: 'Kultur, verdier og bygd/by',
+            summary: 'Sekularisering, ritualer og matkultur, individualistisk vs. kollektivistisk kultur, Ungdata bygd/by og industrikultur på Herøya.',
+            terms: ['Subkultur', 'Sekularisering', 'Individualisme vs. kollektivisme', 'Herøya'],
+            connections: ['k3-normer', 'k3-sosialisering'],
+            href: 'index.html#kap4-kultur'
+          },
+          {
+            id: 'k4-mangfold',
+            title: 'Urfolk, minoriteter og analyse',
+            summary: 'Samene i Sápmi, fem nasjonale minoriteter, fornorsking vs. integrering, samt etnosentrisme, kulturrelativisme og kulturell appropriasjon.',
+            terms: ['Urfolk (Sápmi)', 'Fornorsking', 'Etnosentrisme', 'Kulturrelativisme', 'Kulturell appropriasjon'],
+            connections: ['k4-innvandring'],
+            href: 'index.html#kap4-mangfold'
+          },
+          {
+            id: 'k4-innvandring',
+            title: 'Innvandring i Skien og Norge',
+            summary: 'SSB-tall (2024–2026) for Skien (>20 % innvandrerbakgrunn), Telemark (~47 % fluktbakgrunn) og gjensidig kulturpåvirkning.',
+            terms: ['Skien (SSB 2026)', 'Telemark', 'Arbeidsinnvandring', 'Motkultur'],
+            connections: ['k2-lokalvalg', 'k4-mangfold'],
+            href: 'index.html#kap4-innvandring'
+          },
+          {
+            id: 'k4-rasisme',
+            title: 'Rasisme og ytringsfrihet',
+            summary: 'Generalisering, fordommer, arbeidslivsdiskriminering, kritisk bruk av kriminalitetsstatistikk, straffeloven § 185 og diskrimineringsloven.',
+            terms: ['Fordommer', 'Overrepresentasjon', 'Ytringsfrihet (§ 185)', 'Diskrimineringsloven'],
+            connections: ['k2-maktfordeling', 'k3-kjonn', 'k3-kriminalitet'],
+            href: 'index.html#kap4-rasisme'
+          }
+        ]
+      }
+    ];
+
+    const allNodes = new Map();
+    TREE_DATA.forEach(group => group.nodes.forEach(n => allNodes.set(n.id, { ...n, chapter: group.chapter, chapterTitle: group.title })));
+
+    let activeFilter = 'all';
+    let selectedId = 'k1-makt';
+
+    function renderTree() {
+      const container = document.getElementById('tree-container');
+      const groups = activeFilter === 'all'
+        ? TREE_DATA
+        : TREE_DATA.filter(g => String(g.chapter) === activeFilter);
+
+      container.innerHTML = groups.map(group => `
+        <div class="surface-card border rounded-2xl p-5 shadow-2xs">
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <div class="flex items-center gap-2.5">
+              <span class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-teal-700 dark:bg-teal-400 text-white dark:text-slate-950 text-xs font-bold">${group.chapter}</span>
+              <div>
+                <h2 class="font-serif text-lg font-bold leading-tight">${group.title}</h2>
+                <p class="text-xs" style="color: var(--muted)">${group.subtitle}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-2.5 pl-3 border-l-2" style="border-color: var(--accent)">
+            ${group.nodes.map(node => `
+              <button
+                type="button"
+                data-node-id="${node.id}"
+                class="node-btn text-left rounded-xl border p-3.5 surface-card ${node.id === selectedId ? 'active' : ''}"
+              >
+                <div class="flex items-center justify-between gap-2 mb-1">
+                  <span class="font-semibold text-sm">${node.title}</span>
+                  <span class="text-[11px]" style="color: var(--muted)">${node.connections.length} koblinger</span>
+                </div>
+                <p class="text-xs line-clamp-2" style="color: var(--muted)">${node.summary}</p>
+              </button>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+
+      container.querySelectorAll('[data-node-id]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedId = btn.getAttribute('data-node-id');
+          renderTree();
+          renderDetail();
+        });
+      });
+    }
+
+    function renderDetail() {
+      const node = allNodes.get(selectedId);
+      if (!node) return;
+
+      document.getElementById('detail-badge').textContent = `Kapittel ${node.chapter}`;
+      document.getElementById('detail-chap').textContent = node.chapterTitle;
+      document.getElementById('detail-title').textContent = node.title;
+      document.getElementById('detail-summary').textContent = node.summary;
+      document.getElementById('detail-read-link').href = node.href;
+
+      document.getElementById('detail-terms').innerHTML = node.terms.map(t => `
+        <span class="px-2.5 py-1 rounded-md text-xs font-medium border surface-card">${t}</span>
+      `).join('');
+
+      document.getElementById('detail-connections').innerHTML = node.connections.map(cid => {
+        const target = allNodes.get(cid);
+        if (!target) return '';
+        return `
+          <button type="button" data-jump-node="${cid}" class="px-2.5 py-1 rounded-md text-xs font-medium border surface-card hover:border-teal-500 transition">
+            Kap. ${target.chapter}: ${target.title}
+          </button>
+        `;
+      }).join('');
+
+      document.querySelectorAll('[data-jump-node]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          selectedId = btn.getAttribute('data-jump-node');
+          activeFilter = 'all';
+          syncFilterPills();
+          renderTree();
+          renderDetail();
+        });
+      });
+    }
+
+    function syncFilterPills() {
+      document.querySelectorAll('.filter-pill').forEach(pill => {
+        const isCurrent = pill.getAttribute('data-filter') === activeFilter;
+        pill.className = isCurrent
+          ? 'filter-pill px-3 py-1.5 rounded-full bg-teal-700 text-white dark:bg-teal-400 dark:text-slate-950'
+          : 'filter-pill px-3 py-1.5 rounded-full border surface-card';
+      });
+    }
+
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        activeFilter = pill.getAttribute('data-filter');
+        const visible = activeFilter === 'all'
+          ? TREE_DATA[0].nodes[0].id
+          : TREE_DATA.find(g => String(g.chapter) === activeFilter)?.nodes[0]?.id;
+        if (visible) selectedId = visible;
+        syncFilterPills();
+        renderTree();
+        renderDetail();
+      });
+    });
+
+    const themeBtn = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const syncThemeIcon = () => {
+      themeIcon.textContent = document.documentElement.classList.contains('dark') ? '☀️' : '🌙';
+    };
+    syncThemeIcon();
+    themeBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.classList.toggle('dark');
+      try { localStorage.setItem('delta-theme', isDark ? 'dark' : 'light'); } catch (e) {}
+      syncThemeIcon();
+    });
+
+    renderTree();
+    renderDetail();
+  </script>
+</body>
+</html>
